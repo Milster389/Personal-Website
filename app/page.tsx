@@ -18,6 +18,7 @@ type ExpEntry = {
   role: string;
   title: string;
   desc: string;
+  achievements: string[];
   body: string[];
   stats: string[];
 };
@@ -28,6 +29,11 @@ const EXPERIENCE: ExpEntry[] = [
     role: "Youth Advisor",
     title: "NHL Power Players",
     desc: "Selected as 1 of 25 from 1,500+ applicants to advise the National Hockey League on youth marketing and fan engagement strategy.",
+    achievements: [
+      "1 of 25 advisors selected from 1,500+ applicants — only one from Maryland",
+      "Shaped Gen Z fan-engagement strategy with NHL marketing execs over two seasons",
+      "Invited back for a second-year term",
+    ],
     body: [
       "Worked directly with NHL marketing executives over two seasons to shape strategy on how the league engages Gen Z and youth hockey fans.",
       "Contributed to research and pitch decks across digital fan touchpoints, in-arena experience design, and grassroots growth.",
@@ -39,19 +45,29 @@ const EXPERIENCE: ExpEntry[] = [
     year: "2023 — 2026",
     role: "Chapter President",
     title: "FBLA · Entrepreneurship",
-    desc: "Chapter President at River Hill. 3× Maryland State Champion. Top 10 nationally in Anaheim. 9th internationally.",
+    desc: "Chapter President of River Hill FBLA — a 280+ member chapter. 3× Maryland State Champion. Top 10 nationally. 9th internationally.",
+    achievements: [
+      "Oversee a 280+ member FBLA chapter as elected Chapter President",
+      "3× Maryland State Champion in Entrepreneurship (consecutive years)",
+      "Top 10 nationally in Anaheim · 9th internationally",
+    ],
     body: [
-      "Chapter President of River Hill FBLA — leading officer team, programming, and competitive prep across the school year.",
+      "Chapter President of River Hill FBLA, overseeing a 280+ member chapter — leading the officer team, programming, and competitive prep across the school year.",
       "Built and defended business plans, financial models, and live pitches against the top high-school entrepreneurs in the country.",
       "Three consecutive Maryland state titles · Top 10 nationally in Anaheim · 9th internationally.",
     ],
-    stats: ["Chapter President", "3× State Champion", "Top 10 Nationally", "9th Internationally"],
+    stats: ["Chapter President", "280+ members", "3× State Champion", "Top 10 Nationally", "9th Internationally"],
   },
   {
     year: "2025",
     role: "Global Youth Scholar",
     title: "Wharton · Cryotherapy Startup Pitch",
     desc: "Pitched a cryotherapy sports-recovery startup; owned the financial model and go-to-market strategy.",
+    achievements: [
+      "Selected for the Wharton Global Youth Scholars Program at UPenn",
+      "Owned financial model, unit economics, and GTM strategy for the final pitch",
+      "Co-developed a cryotherapy concept for high-school and collegiate athletes",
+    ],
     body: [
       "Selected for the Wharton Global Youth Scholars Program at the University of Pennsylvania.",
       "Co-developed and pitched a cryotherapy-based sports recovery concept for high-school and collegiate athletes.",
@@ -64,6 +80,11 @@ const EXPERIENCE: ExpEntry[] = [
     role: "Founder & President",
     title: "River Hill Pickleball Club",
     desc: "Founded Howard County's first high-school pickleball club. 83 members, competitive team, $1,070 raised for the HoCo Police Foundation.",
+    achievements: [
+      "Founded the first high-school pickleball club in Howard County — built from zero",
+      "Grew to 83 members with a competitive team and custom-designed jerseys",
+      "Hosted a fundraiser in April 2026 that raised $1,070 for the HoCo Police Foundation",
+    ],
     body: [
       "Founder and President of the first high-school pickleball club in Howard County — pitched the admin, recruited members, and built operations from zero.",
       "Grew to 83 members with a competitive team, custom-designed jerseys, and weekly practice + match programming.",
@@ -76,6 +97,11 @@ const EXPERIENCE: ExpEntry[] = [
     role: "Co-Founder & President",
     title: "Collaborative Marketing Club",
     desc: "Co-founded an 80+ member club running real marketing campaigns for local businesses. Hosted the CEO of Bombas in May 2026.",
+    achievements: [
+      "Co-founded and currently President of an 80+ member club across two years",
+      "Pairs students with real small businesses to run live marketing campaigns",
+      "Hosted the CEO of Bombas as featured speaker in May 2026",
+    ],
     body: [
       "Co-founder and President of a club that pairs students with real small businesses to run marketing campaigns — strategy, content, and creative.",
       "Grew to 80+ members across two years with structured pods and a real client pipeline.",
@@ -87,13 +113,18 @@ const EXPERIENCE: ExpEntry[] = [
     year: "2014 — Now",
     role: "Athlete",
     title: "Competitive Ice Hockey",
-    desc: "10+ years of competitive ice hockey across local and travel programs.",
-    body: [
-      "Over a decade of competitive ice hockey across local and travel programs.",
-      "Where I learned how to lead — show up early, hold the line, and back your teammates regardless of the score.",
-      "The through-line for how I run every club, pitch, and project off the ice.",
+    desc: "10+ years of AA travel hockey · River Hill Varsity — undefeated season and first-ever Serio Cup County Championship in school history.",
+    achievements: [
+      "10+ years playing AA hockey with the Montgomery Ice Devils, Howard Huskies, Junior Black Bears, and Tri-City Eagles",
+      "Member of the River Hill Varsity Ice Hockey team — capped off an undefeated season",
+      "Won the first Serio Cup County Championship in River Hill history",
     ],
-    stats: ["10+ years", "Travel teams", "Team leader"],
+    body: [
+      "Over a decade of competitive AA travel hockey with the Montgomery Ice Devils, Howard Huskies, Junior Black Bears, and Tri-City Eagles.",
+      "Now skating for the River Hill Varsity Ice Hockey team — we just finished an undefeated season and brought home the first Serio Cup County Championship in school history.",
+      "The locker room is where I learned how to lead — show up early, hold the line, and back your teammates regardless of the score. The through-line for how I run every club, pitch, and project off the ice.",
+    ],
+    stats: ["10+ years AA", "Serio Cup Champions", "Undefeated season", "RHHS Varsity"],
   },
 ];
 
@@ -115,33 +146,17 @@ function Nav({ active, onJump }: { active: string; onJump: (id: string) => void 
   ];
   return (
     <header className="nav">
-      <a
-        href="#hero"
-        className="nav-brand"
-        onClick={(e) => {
-          e.preventDefault();
-          onJump("hero");
-        }}
-      >
+      <a href="#hero" className="nav-brand" onClick={(e) => { e.preventDefault(); onJump("hero"); }}>
         <span className="accent">●</span>Milan Shah
       </a>
       <nav className="nav-links">
         {items.map((it) => (
-          <a
-            key={it.id}
-            href={"#" + it.id}
-            className={active === it.id ? "active" : ""}
-            onClick={(e) => {
-              e.preventDefault();
-              onJump(it.id);
-            }}
-          >
+          <a key={it.id} href={"#" + it.id} className={active === it.id ? "active" : ""}
+             onClick={(e) => { e.preventDefault(); onJump(it.id); }}>
             {it.label}
           </a>
         ))}
-        <a className="always" href="mailto:milanshahmd@gmail.com">
-          Email
-        </a>
+        <a className="always" href="mailto:milanshahmd@gmail.com">Email</a>
       </nav>
     </header>
   );
@@ -171,9 +186,7 @@ function Hero() {
   return (
     <section id="hero" className="hero">
       <div className="marquee-stack">
-        {MARQUEE_LINES.map((l, i) => (
-          <MarqueeRow key={i} {...l} />
-        ))}
+        {MARQUEE_LINES.map((l, i) => <MarqueeRow key={i} {...l} />)}
       </div>
 
       <div className="hero-eyebrow">
@@ -183,45 +196,30 @@ function Hero() {
 
       <div className="hero-inner">
         <h1 className="hero-name">
-          <span className="row">
-            <span style={{ ["--d" as string]: "0.15s" } as React.CSSProperties}>Milan</span>
-          </span>
-          <span className="row">
-            <span style={{ ["--d" as string]: "0.30s" } as React.CSSProperties}>
-              Shah<span className="accent">.</span>
-            </span>
-          </span>
+          <span className="row"><span style={{ ["--d" as string]: "0.15s" } as React.CSSProperties}>Milan</span></span>
+          <span className="row"><span style={{ ["--d" as string]: "0.30s" } as React.CSSProperties}>Shah<span className="accent">.</span></span></span>
         </h1>
 
         <div className="hero-meta">
           <p className="hero-tagline">
-            <span className="accent">President of three student organizations.</span>
-            <br />
+            <span className="accent">President of three student organizations.</span><br />
             <span className="muted">
-              3× Maryland FBLA State Champion.
-              <br />
-              NHL Youth Marketing Advisor.
-              <br />
+              3× Maryland FBLA State Champion.<br />
+              NHL Youth Marketing Advisor.<br />
               Wharton Global Youth Scholar.
             </span>
           </p>
           <div className="hero-stats">
             <div className="hero-stat">
-              <div className="v">
-                <span className="accent">3×</span> PRES.
-              </div>
+              <div className="v"><span className="accent">3×</span> PRES.</div>
               <div className="l">FBLA · CMC · Pickleball</div>
             </div>
             <div className="hero-stat">
-              <div className="v">
-                <span className="accent-2">3×</span> STATE
-              </div>
+              <div className="v"><span className="accent-2">3×</span> STATE</div>
               <div className="l">FBLA Champion</div>
             </div>
             <div className="hero-stat">
-              <div className="v">
-                1<span className="accent">/</span>25
-              </div>
+              <div className="v">1<span className="accent">/</span>25</div>
               <div className="l">NHL Advisor</div>
             </div>
           </div>
@@ -249,44 +247,31 @@ function About() {
         </div>
         <div className="about-grid">
           <div className="about-photo">
-            <Image
-              src="/milan.png"
-              alt="Milan Shah"
-              width={520}
-              height={520}
-              priority
-            />
+            <Image src="/milan.png" alt="Milan Shah" width={520} height={520} priority />
           </div>
           <div>
             <h3 className="about-headline">
-              Junior at <span className="italic">River Hill</span> High School —{" "}
-              <span className="italic">built to lead</span>.
+              Junior at <span className="italic">River Hill</span> High School — <span className="italic">built to lead</span>.
             </h3>
             <div className="about-text">
               <p>
                 I lead three student organizations as <strong>President of FBLA</strong>, the
                 <strong> Collaborative Marketing Club</strong>, and the
-                <strong> River Hill Pickleball Club</strong> — founding two of them from zero to a
-                combined <span className="hl">160+ members</span>.
+                <strong> River Hill Pickleball Club</strong> — founding two of them from zero to a combined
+                <span className="hl"> 160+ members</span>, and overseeing the FBLA chapter of
+                <span className="hl"> 280+ members</span>.
               </p>
               <p>
                 I&apos;m a <strong>3× Maryland FBLA State Champion</strong> in Entrepreneurship, a{" "}
                 <strong>Wharton Global Youth Scholar</strong>, and one of
-                <span className="hl"> 25 advisors selected from 1,500+ applicants</span> to advise the
-                NHL on youth marketing strategy.
+                <span className="hl"> 25 advisors selected from 1,500+ applicants</span> to advise the NHL on youth marketing strategy.
               </p>
               <p>
-                Off the field, I&apos;ve played competitive ice hockey for over a decade — where I
-                learned how to lead a team and show up every day. Currently applying to college for the
-                Class of 2031.
+                Off the field, I&apos;ve played competitive ice hockey for over a decade — where I learned how to lead a team and show up every day. Currently applying to college for the Class of 2031.
               </p>
             </div>
             <div className="skills">
-              {SKILLS.map((s) => (
-                <span key={s} className="skill">
-                  {s}
-                </span>
-              ))}
+              {SKILLS.map((s) => <span key={s} className="skill">{s}</span>)}
             </div>
           </div>
         </div>
@@ -314,6 +299,11 @@ function Experience({ onOpen }: { onOpen: (idx: number) => void }) {
                   {e.title}
                 </div>
                 <div className="exp-desc">{e.desc}</div>
+                {e.achievements && (
+                  <ul className="exp-achievements">
+                    {e.achievements.map((a, j) => <li key={j}>{a}</li>)}
+                  </ul>
+                )}
               </div>
               <div className="exp-arrow">→</div>
             </div>
@@ -328,18 +318,14 @@ function CaseStudy({ idx, onClose }: { idx: number | null; onClose: () => void }
   const open = idx !== null;
   const e = open ? EXPERIENCE[idx as number] : null;
   useEffect(() => {
-    const k = (ev: KeyboardEvent) => {
-      if (ev.key === "Escape") onClose();
-    };
+    const k = (ev: KeyboardEvent) => { if (ev.key === "Escape") onClose(); };
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
   }, [onClose]);
   return (
     <div className={"modal-bg" + (open ? " open" : "")} onClick={onClose}>
       <div className="modal" onClick={(ev) => ev.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>
-          Close
-        </button>
+        <button className="modal-close" onClick={onClose}>Close</button>
         {e && (
           <>
             <h3>{e.title}</h3>
@@ -347,13 +333,9 @@ function CaseStudy({ idx, onClose }: { idx: number | null; onClose: () => void }
               <span className="accent">{e.role}</span> · {e.year}
             </div>
             <div className="modal-stats">
-              {e.stats.map((s, i) => (
-                <span key={i}>{s}</span>
-              ))}
+              {e.stats.map((s, i) => <span key={i}>{s}</span>)}
             </div>
-            {e.body.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+            {e.body.map((p, i) => <p key={i}>{p}</p>)}
           </>
         )}
       </div>
@@ -370,8 +352,7 @@ function Contact() {
           <span className="meta">03</span>
         </div>
         <p style={{ fontSize: 17, color: "var(--fg)", marginBottom: 28, maxWidth: "52ch" }}>
-          If you&apos;re a college admissions officer, recruiter, or want to collaborate — the fastest
-          way to reach me is email.
+          If you&apos;re a college admissions officer, recruiter, or want to collaborate — the fastest way to reach me is email.
         </p>
         <div className="contact-list">
           <a className="contact-row" href="mailto:milanshahmd@gmail.com">
@@ -384,12 +365,7 @@ function Contact() {
             <span className="v">+1 · 443 · 788 · 6685</span>
             <span className="arr">→</span>
           </a>
-          <a
-            className="contact-row"
-            href="https://linkedin.com/in/milan-shah-08b719304"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a className="contact-row" href="https://linkedin.com/in/milan-shah-08b719304" target="_blank" rel="noreferrer">
             <span className="k">LinkedIn</span>
             <span className="v">/in/milan-shah</span>
             <span className="arr">→</span>
@@ -404,9 +380,7 @@ function Footer() {
   return (
     <footer className="footer">
       <span>© 2026 Milan Shah · Clarksville, MD</span>
-      <span>
-        <span className="accent">●</span> Currently · applying to college
-      </span>
+      <span><span className="accent">●</span> Currently · applying to college</span>
     </footer>
   );
 }
@@ -421,21 +395,15 @@ export default function Page() {
   useEffect(() => {
     const ids = ["hero", "about", "work", "contact"];
     const visible = new Set<string>();
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) visible.add(e.target.id);
-          else visible.delete(e.target.id);
-        });
-        for (const id of ids) {
-          if (visible.has(id)) {
-            setActive(id);
-            return;
-          }
-        }
-      },
-      { rootMargin: "0px 0px -55% 0px", threshold: 0 }
-    );
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) visible.add(e.target.id);
+        else visible.delete(e.target.id);
+      });
+      for (const id of ids) {
+        if (visible.has(id)) { setActive(id); return; }
+      }
+    }, { rootMargin: "0px 0px -55% 0px", threshold: 0 });
     ids.forEach((id) => {
       const el = document.getElementById(id);
       if (el) obs.observe(el);
