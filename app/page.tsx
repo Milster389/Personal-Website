@@ -1,434 +1,259 @@
 "use client";
 
-import { useState, useEffect, useCallback, Fragment } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 
-// =====================================================
-// DATA
-// =====================================================
-const SKILLS = [
-  "Marketing Strategy", "Entrepreneurship", "Public Speaking",
-  "Brand & Logo Design", "Event Planning", "Business Development",
-  "Financial Modeling", "Team Leadership", "SOP Writing",
-  "Social Media Content", "Customer Experience",
-];
-
-type ExpEntry = {
-  year: string;
-  role: string;
-  title: string;
-  desc: string;
-  achievements: string[];
-  body: string[];
-  stats: string[];
-};
-
-const EXPERIENCE: ExpEntry[] = [
+const EXPERIENCE = [
   {
-    year: "2023 — 2025",
-    role: "Youth Advisor",
-    title: "NHL Power Players",
-    desc: "Selected as 1 of 25 from 1,500+ applicants to advise the National Hockey League on youth marketing and fan engagement strategy.",
-    achievements: [
-      "1 of 25 advisors selected from 1,500+ applicants — only one from Maryland",
-      "Shaped Gen Z fan-engagement strategy with NHL marketing execs over two seasons",
-      "Invited back for a second-year term",
+    year: "2023 · NOW",
+    org: "River Hill FBLA",
+    role: "Chapter President",
+    desc: "Leading the chapter I joined as a freshman with no title.",
+    points: [
+      "6th in the nation, Organizational Leadership (San Antonio 2026)",
+      "9th in the nation, Entrepreneurship (Anaheim 2025)",
+      "State champion 3 years straight: 2024, 2025, 2026",
+      `Ran the "Pressure Makes Presence" workshop at Nationals for 100+ attendees`,
     ],
-    body: [
-      "Worked directly with NHL marketing executives over two seasons to shape strategy on how the league engages Gen Z and youth hockey fans.",
-      "Contributed to research and pitch decks across digital fan touchpoints, in-arena experience design, and grassroots growth.",
-      "One of the youngest advisors selected, and the only from Maryland — invited back for a second-year term.",
-    ],
-    stats: ["1 of 25 selected", "1,500+ applicants", "2 seasons"],
   },
   {
-    year: "2023 — 2026",
-    role: "Chapter President",
-    title: "FBLA · Entrepreneurship",
-    desc: "Chapter President of River Hill FBLA — a 280+ member chapter. 3× Maryland State Champion. Top 10 nationally. 9th internationally.",
-    achievements: [
-      "Oversee a 280+ member FBLA chapter as elected Chapter President",
-      "3× Maryland State Champion in Entrepreneurship (consecutive years)",
-      "Top 10 nationally in Anaheim · 9th internationally",
+    year: "2023 · 2025",
+    org: "NHL Power Players",
+    role: "Youth Advisory Board",
+    desc: "1 of 25 picked from 1,500+ applicants. A 1.7% acceptance rate.",
+    points: [
+      "Served two terms under the NHL's Chief Marketing Officer",
+      "Presented to the league's marketing division at biweekly meetings",
+      "Represented the board at All-Star Weekend 2024 and the 4 Nations Face-Off 2025",
     ],
-    body: [
-      "Chapter President of River Hill FBLA, overseeing a 280+ member chapter — leading the officer team, programming, and competitive prep across the school year.",
-      "Built and defended business plans, financial models, and live pitches against the top high-school entrepreneurs in the country.",
-      "Three consecutive Maryland state titles · Top 10 nationally in Anaheim · 9th internationally.",
+  },
+  {
+    year: "2025 · NOW",
+    org: "GSD Associates",
+    role: "Support Specialist",
+    desc: "Operations for US medical practices and their offshore teams.",
+    points: [
+      "Wrote the patient-intake SOP now used by onsite and offshore teams",
+      "Built compliance training for a 10+ person offshore team",
+      "Cut average response time roughly 30% with escalation protocols",
+      "Screened offshore candidates across 3+ medical practice accounts",
     ],
-    stats: ["Chapter President", "280+ members", "3× State Champion", "Top 10 Nationally", "9th Internationally"],
   },
   {
     year: "2025",
-    role: "Global Youth Scholar",
-    title: "Wharton · Cryotherapy Startup Pitch",
-    desc: "Pitched a cryotherapy sports-recovery startup; owned the financial model and go-to-market strategy.",
-    achievements: [
-      "Selected for the Wharton Global Youth Scholars Program at UPenn",
-      "Owned financial model, unit economics, and GTM strategy for the final pitch",
-      "Co-developed a cryotherapy concept for high-school and collegiate athletes",
+    org: "Wharton Global Youth",
+    role: "Scholar",
+    desc: "Essentials of Entrepreneurship at the Wharton School, UPenn.",
+    points: [
+      "Co-built a cryotherapy performance-bandage startup for athletes",
+      "Led the financial projections, pricing, and unit economics",
+      "Pitched the full venture to faculty and peer evaluators",
     ],
-    body: [
-      "Selected for the Wharton Global Youth Scholars Program at the University of Pennsylvania.",
-      "Co-developed and pitched a cryotherapy-based sports recovery concept for high-school and collegiate athletes.",
-      "Owned the financial model, unit economics, and go-to-market strategy for the team's final pitch.",
-    ],
-    stats: ["Wharton · UPenn", "Financial model", "Go-to-market"],
   },
   {
-    year: "2023 — Now",
-    role: "Founder & President",
-    title: "River Hill Pickleball Club",
-    desc: "Founded Howard County's first high-school pickleball club. 83 members, competitive team, $1,070 raised for the HoCo Police Foundation.",
-    achievements: [
-      "Founded the first high-school pickleball club in Howard County — built from zero",
-      "Grew to 83 members with a competitive team and custom-designed jerseys",
-      "Hosted a fundraiser in April 2026 that raised $1,070 for the HoCo Police Foundation",
-    ],
-    body: [
-      "Founder and President of the first high-school pickleball club in Howard County — pitched the admin, recruited members, and built operations from zero.",
-      "Grew to 83 members with a competitive team, custom-designed jerseys, and weekly practice + match programming.",
-      "Hosted a fundraiser in April 2026 that raised $1,070 for the Howard County Police Foundation.",
-    ],
-    stats: ["Founder & President", "83 members", "$1,070 raised", "First in HoCo"],
-  },
-  {
-    year: "2024 — Now",
+    year: "2024 · NOW",
+    org: "Collaborative Marketing Club",
     role: "Co-Founder & President",
-    title: "Collaborative Marketing Club",
-    desc: "Co-founded an 80+ member club running real marketing campaigns for local businesses. Hosted the CEO of Bombas in May 2026.",
-    achievements: [
-      "Co-founded and currently President of an 80+ member club across two years",
-      "Pairs students with real small businesses to run live marketing campaigns",
-      "Hosted the CEO of Bombas as featured speaker in May 2026",
+    desc: "Students running real campaigns for local businesses.",
+    points: [
+      "Co-founded it, grew it to 80+ members in two years",
+      "Connects members with business speakers and live client work",
     ],
-    body: [
-      "Co-founder and President of a club that pairs students with real small businesses to run marketing campaigns — strategy, content, and creative.",
-      "Grew to 80+ members across two years with structured pods and a real client pipeline.",
-      "Hosted the CEO of Bombas as a featured speaker in May 2026.",
-    ],
-    stats: ["Co-Founder & President", "80+ members", "CEO of Bombas"],
   },
   {
-    year: "2014 — Now",
-    role: "Athlete",
-    title: "Competitive Ice Hockey",
-    desc: "10+ years of AA travel hockey · River Hill Varsity — undefeated season and first-ever Serio Cup County Championship in school history.",
-    achievements: [
-      "10+ years playing AA hockey with the Montgomery Ice Devils, Howard Huskies, Junior Black Bears, and Tri-City Eagles",
-      "Member of the River Hill Varsity Ice Hockey team — capped off an undefeated season",
-      "Won the first Serio Cup County Championship in River Hill history",
+    year: "2023 · NOW",
+    org: "River Hill Pickleball Club",
+    role: "Founder & President",
+    desc: "One of Maryland's first public high school pickleball clubs.",
+    points: [
+      "Grew from launch to 83 members, competitive and general teams",
+      "Designed the club's jerseys and branding",
+      "Ran a fundraiser for the Howard County Police Foundation",
     ],
-    body: [
-      "Over a decade of competitive AA travel hockey with the Montgomery Ice Devils, Howard Huskies, Junior Black Bears, and Tri-City Eagles.",
-      "Now skating for the River Hill Varsity Ice Hockey team — we just finished an undefeated season and brought home the first Serio Cup County Championship in school history.",
-      "The locker room is where I learned how to lead — show up early, hold the line, and back your teammates regardless of the score. The through-line for how I run every club, pitch, and project off the ice.",
+  },
+  {
+    year: "2026 · NOW",
+    org: "Blossoms of Hope",
+    role: "Volunteer Intern",
+    desc: "Fundraising support for a Howard County nonprofit.",
+    points: [
+      "Designed auction listings for luxury items: golf trips, spa packages, NHL memorabilia",
     ],
-    stats: ["10+ years AA", "Serio Cup Champions", "Undefeated season", "RHHS Varsity"],
+  },
+  {
+    year: "2014 · NOW",
+    org: "Competitive Ice Hockey",
+    role: "River Hill Varsity",
+    desc: "10+ years of AA travel and varsity hockey.",
+    points: [
+      "Undefeated 12-0 season, first Serio Cup champions in school history",
+      "Double Crown: also won the state academic title for highest team GPA in Maryland",
+    ],
   },
 ];
 
-const MARQUEE_LINES: { words: string[]; cls: string }[] = [
-  { words: ["ENTREPRENEUR", "ATHLETE", "LEADER", "FOUNDER", "PRESIDENT"], cls: "" },
-  { words: ["MILAN", "·", "SHAH", "·", "PORTFOLIO", "·", "2026"], cls: "solid" },
-  { words: ["FBLA", "NHL", "WHARTON", "MARKETING", "FOUNDER"], cls: "accent reverse" },
-  { words: ["BUILDING", "·", "REAL", "·", "THINGS", "·", "BEFORE", "·", "GRADUATION"], cls: "slow" },
+const HONORS = [
+  { what: "3× State Champion, Entrepreneurship & Organizational Leadership", who: "Maryland FBLA" },
+  { what: "6th in the Nation, Organizational Leadership", who: "FBLA Nationals '26" },
+  { what: "9th in the Nation, Entrepreneurship", who: "FBLA Nationals '25" },
+  { what: "Youth Advisory Board, 1 of 25 from 1,500+", who: "NHL" },
+  { what: "Serio Cup Champion, undefeated season", who: "River Hill Varsity Hockey" },
+  { what: "Essentials of Entrepreneurship", who: "Wharton Global Youth" },
 ];
 
-// =====================================================
-// COMPONENTS
-// =====================================================
-function Nav({ active, onJump }: { active: string; onJump: (id: string) => void }) {
-  const items = [
-    { id: "about", label: "About" },
-    { id: "work", label: "Experience" },
-    { id: "contact", label: "Contact" },
-  ];
-  return (
-    <header className="nav">
-      <a href="#hero" className="nav-brand" onClick={(e) => { e.preventDefault(); onJump("hero"); }}>
-        <span className="accent">●</span>Milan Shah
-      </a>
-      <nav className="nav-links">
-        {items.map((it) => (
-          <a key={it.id} href={"#" + it.id} className={active === it.id ? "active" : ""}
-             onClick={(e) => { e.preventDefault(); onJump(it.id); }}>
-            {it.label}
-          </a>
-        ))}
-        <a className="always" href="mailto:milanshahmd@gmail.com">Email</a>
-      </nav>
-    </header>
-  );
-}
-
-function MarqueeRow({ words, cls }: { words: string[]; cls: string }) {
-  const seq = [...words, ...words, ...words, ...words];
-  return (
-    <div className={"marquee " + cls}>
-      <div className="marquee-track">
-        {[0, 1].map((rep) => (
-          <span key={rep}>
-            {seq.map((w, i) => (
-              <Fragment key={i}>
-                {w}
-                <span className="dot" />
-              </Fragment>
-            ))}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function Hero() {
-  return (
-    <section id="hero" className="hero">
-      <div className="marquee-stack">
-        {MARQUEE_LINES.map((l, i) => <MarqueeRow key={i} {...l} />)}
-      </div>
-
-      <div className="hero-eyebrow">
-        <span className="dot" />
-        <span>Junior · River Hill High School · Class of 2027</span>
-      </div>
-
-      <div className="hero-inner">
-        <h1 className="hero-name">
-          <span className="row"><span style={{ ["--d" as string]: "0.15s" } as React.CSSProperties}>Milan</span></span>
-          <span className="row"><span style={{ ["--d" as string]: "0.30s" } as React.CSSProperties}>Shah<span className="accent">.</span></span></span>
-        </h1>
-
-        <div className="hero-meta">
-          <p className="hero-tagline">
-            <span className="accent">President of three student organizations.</span><br />
-            <span className="muted">
-              3× Maryland FBLA State Champion.<br />
-              NHL Youth Marketing Advisor.<br />
-              Wharton Global Youth Scholar.
-            </span>
-          </p>
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <div className="v"><span className="accent">3×</span> PRES.</div>
-              <div className="l">FBLA · CMC · Pickleball</div>
-            </div>
-            <div className="hero-stat">
-              <div className="v"><span className="accent-2">3×</span> STATE</div>
-              <div className="l">FBLA Champion</div>
-            </div>
-            <div className="hero-stat">
-              <div className="v">1<span className="accent">/</span>25</div>
-              <div className="l">NHL Advisor</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="hero-footer">
-        <span>Portfolio · 2026</span>
-        <span className="scroll-hint">
-          <span>Scroll</span> <span className="line" />
-        </span>
-        <span>Clarksville, MD</span>
-      </div>
-    </section>
-  );
-}
-
-function About() {
-  return (
-    <section id="about">
-      <div className="wrap">
-        <div className="section-head">
-          <h2>About</h2>
-          <span className="meta">01</span>
-        </div>
-        <div className="about-grid">
-          <div className="about-photo">
-            <Image src="/milan.png" alt="Milan Shah" width={520} height={520} priority />
-          </div>
-          <div>
-            <h3 className="about-headline">
-              Junior at <span className="italic">River Hill</span> High School — <span className="italic">built to lead</span>.
-            </h3>
-            <div className="about-text">
-              <p>
-                I lead three student organizations as <strong>President of FBLA</strong>, the
-                <strong> Collaborative Marketing Club</strong>, and the
-                <strong> River Hill Pickleball Club</strong> — founding two of them from zero to a combined
-                <span className="hl"> 160+ members</span>, and overseeing the FBLA chapter of
-                <span className="hl"> 280+ members</span>.
-              </p>
-              <p>
-                I&apos;m a <strong>3× Maryland FBLA State Champion</strong> in Entrepreneurship, a{" "}
-                <strong>Wharton Global Youth Scholar</strong>, and one of
-                <span className="hl"> 25 advisors selected from 1,500+ applicants</span> to advise the NHL on youth marketing strategy.
-              </p>
-              <p>
-                Off the field, I&apos;ve played competitive ice hockey for over a decade — where I learned how to lead a team and show up every day. Currently applying to college for the Class of 2031.
-              </p>
-            </div>
-            <div className="skills">
-              {SKILLS.map((s) => <span key={s} className="skill">{s}</span>)}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Experience({ onOpen }: { onOpen: (idx: number) => void }) {
-  return (
-    <section id="work">
-      <div className="wrap">
-        <div className="section-head">
-          <h2>Selected experience</h2>
-          <span className="meta">02</span>
-        </div>
-        <div className="exp-list">
-          {EXPERIENCE.map((e, i) => (
-            <div key={i} className="exp-row" onClick={() => onOpen(i)}>
-              <div className="exp-year">{e.year}</div>
-              <div className="exp-body">
-                <div className="exp-title">
-                  <span className="role">{e.role}</span>
-                  <span style={{ color: "var(--fg-3)", margin: "0 8px" }}>·</span>
-                  {e.title}
-                </div>
-                <div className="exp-desc">{e.desc}</div>
-                {e.achievements && (
-                  <ul className="exp-achievements">
-                    {e.achievements.map((a, j) => <li key={j}>{a}</li>)}
-                  </ul>
-                )}
-              </div>
-              <div className="exp-arrow">→</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CaseStudy({ idx, onClose }: { idx: number | null; onClose: () => void }) {
-  const open = idx !== null;
-  const e = open ? EXPERIENCE[idx as number] : null;
-  useEffect(() => {
-    const k = (ev: KeyboardEvent) => { if (ev.key === "Escape") onClose(); };
-    window.addEventListener("keydown", k);
-    return () => window.removeEventListener("keydown", k);
-  }, [onClose]);
-  return (
-    <div className={"modal-bg" + (open ? " open" : "")} onClick={onClose}>
-      <div className="modal" onClick={(ev) => ev.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>Close</button>
-        {e && (
-          <>
-            <h3>{e.title}</h3>
-            <div className="modal-meta">
-              <span className="accent">{e.role}</span> · {e.year}
-            </div>
-            <div className="modal-stats">
-              {e.stats.map((s, i) => <span key={i}>{s}</span>)}
-            </div>
-            {e.body.map((p, i) => <p key={i}>{p}</p>)}
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function Contact() {
-  return (
-    <section id="contact">
-      <div className="wrap">
-        <div className="section-head">
-          <h2>Contact</h2>
-          <span className="meta">03</span>
-        </div>
-        <p style={{ fontSize: 17, color: "var(--fg)", marginBottom: 28, maxWidth: "52ch" }}>
-          If you&apos;re a college admissions officer, recruiter, or want to collaborate — the fastest way to reach me is email.
-        </p>
-        <div className="contact-list">
-          <a className="contact-row" href="mailto:milanshahmd@gmail.com">
-            <span className="k">Email</span>
-            <span className="v">milanshahmd@gmail.com</span>
-            <span className="arr">→</span>
-          </a>
-          <a className="contact-row" href="tel:14437886685">
-            <span className="k">Phone</span>
-            <span className="v">+1 · 443 · 788 · 6685</span>
-            <span className="arr">→</span>
-          </a>
-          <a className="contact-row" href="https://linkedin.com/in/milan-shah-08b719304" target="_blank" rel="noreferrer">
-            <span className="k">LinkedIn</span>
-            <span className="v">/in/milan-shah</span>
-            <span className="arr">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <span>© 2026 Milan Shah · Clarksville, MD</span>
-      <span><span className="accent">●</span> Currently · applying to college</span>
-    </footer>
-  );
-}
-
-// =====================================================
-// PAGE
-// =====================================================
 export default function Page() {
-  const [active, setActive] = useState("hero");
-  const [caseIdx, setCaseIdx] = useState<number | null>(null);
-
   useEffect(() => {
-    const ids = ["hero", "about", "work", "contact"];
-    const visible = new Set<string>();
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) visible.add(e.target.id);
-        else visible.delete(e.target.id);
-      });
-      for (const id of ids) {
-        if (visible.has(id)) { setActive(id); return; }
-      }
-    }, { rootMargin: "0px 0px -55% 0px", threshold: 0 });
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-    return () => obs.disconnect();
-  }, []);
+    const nav = document.getElementById("nav");
+    const onScroll = () => nav?.classList.toggle("scrolled", window.scrollY > 8);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
-  const jump = useCallback((id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const navH = (document.querySelector(".nav") as HTMLElement | null)?.offsetHeight || 0;
-    window.scrollTo({ top: el.offsetTop - navH - 8, behavior: "smooth" });
+    let obs: IntersectionObserver | undefined;
+    const reveals = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              obs?.unobserve(e.target);
+            }
+          });
+        },
+        { rootMargin: "0px 0px -10% 0px" }
+      );
+      reveals.forEach((el) => obs?.observe(el));
+    } else {
+      reveals.forEach((el) => el.classList.add("in"));
+    }
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      obs?.disconnect();
+    };
   }, []);
 
   return (
     <>
-      <Nav active={active} onJump={jump} />
-      <main>
-        <Hero />
-        <About />
-        <Experience onOpen={setCaseIdx} />
-        <Contact />
+      <header className="nav" id="nav">
+        <div className="nav-inner">
+          <a className="nav-brand" href="#top">
+            M<span className="amp">·</span>S
+          </a>
+          <nav className="nav-links">
+            <a href="#experience">Experience</a>
+            <a href="#honors">Honors</a>
+            <a href="#education" className="hide-sm">Education</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="top">
+        <section className="hero wrap" id="hero">
+          <div className="hero-grid">
+            <div>
+              <p className="hero-eyebrow caps">Clarksville, Maryland</p>
+              <h1 className="display">
+                <span className="line"><span className="w">Milan</span></span>
+                <span className="line"><span className="w">Shah<span className="accent">.</span></span></span>
+              </h1>
+              <p className="hero-line">
+                Entrepreneur<span className="dot">·</span>Leader<span className="dot">·</span>Athlete
+              </p>
+              <div className="hero-creds caps">
+                <span>3× State Champion</span><span className="sep" />
+                <span>2× National Top 10</span><span className="sep" />
+                <span>NHL Advisory Board</span>
+              </div>
+              <div className="hero-actions">
+                <a className="btn primary" href="mailto:milanshahmd@gmail.com">Get in touch</a>
+                <a className="btn" href="https://www.linkedin.com/in/milan-shah389/" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
+            </div>
+            <div className="hero-photo">
+              <Image src="/milan.png" alt="Milan Shah" width={210} height={210} priority />
+            </div>
+          </div>
+        </section>
+
+        <section className="wrap reveal" id="experience">
+          <h2 className="section-label"><span className="n">01</span><span className="t caps">Experience</span></h2>
+          <div className="exp-list stagger">
+            {EXPERIENCE.map((e) => (
+              <article className="exp-row" key={e.org}>
+                <div className="exp-year">{e.year}</div>
+                <div>
+                  <div className="exp-head">
+                    <h3 className="exp-org">{e.org}</h3>
+                    <span className="exp-role">{e.role}</span>
+                  </div>
+                  <p className="exp-desc">{e.desc}</p>
+                  <ul className="exp-points">
+                    {e.points.map((p) => <li key={p}>{p}</li>)}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="wrap reveal" id="honors">
+          <h2 className="section-label"><span className="n">02</span><span className="t caps">Honors</span></h2>
+          <div className="row-list stagger">
+            {HONORS.map((h) => (
+              <div className="row-item" key={h.what}>
+                <span className="what">{h.what}</span>
+                <span className="who">{h.who}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="wrap reveal" id="education">
+          <h2 className="section-label"><span className="n">03</span><span className="t caps">Education</span></h2>
+          <div className="row-list">
+            <div className="row-item">
+              <span className="what">
+                River Hill High School, Class of 2027
+                <span className="edu-note">National Honor Society · Investment Club VP · Varsity Ice Hockey</span>
+              </span>
+              <span className="who">2023 · 2027</span>
+            </div>
+            <div className="row-item">
+              <span className="what">Glenelg Country School, K–7</span>
+              <span className="who">2014 · 2022</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="wrap reveal" id="contact">
+          <h2 className="section-label"><span className="n">04</span><span className="t caps">Contact</span></h2>
+          <div className="row-list">
+            <a className="row-item contact-item" href="mailto:milanshahmd@gmail.com">
+              <span className="contact-k">Email</span>
+              <span className="what">milanshahmd@gmail.com</span>
+              <span className="arr">→</span>
+            </a>
+            <a className="row-item contact-item" href="tel:14437886685">
+              <span className="contact-k">Phone</span>
+              <span className="what">+1 (443) 788-6685</span>
+              <span className="arr">→</span>
+            </a>
+            <a className="row-item contact-item" href="https://www.linkedin.com/in/milan-shah389/" target="_blank" rel="noreferrer">
+              <span className="contact-k">LinkedIn</span>
+              <span className="what">/in/milan-shah389</span>
+              <span className="arr">→</span>
+            </a>
+          </div>
+        </section>
       </main>
-      <Footer />
-      <CaseStudy idx={caseIdx} onClose={() => setCaseIdx(null)} />
+
+      <footer className="footer">
+        <div className="wrap">
+          <span>© 2026 MILAN SHAH</span>
+          <span>CLARKSVILLE, MD</span>
+        </div>
+      </footer>
     </>
   );
 }
