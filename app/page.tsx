@@ -55,8 +55,8 @@ const EXPERIENCE: Exp[] = [
       "Sit in on live transactions and residential market discussions to learn how a deal actually closes",
     ],
     gallery: [
-      { src: "/assets/img-coldwell-a.webp", pos: "39.5%" },
-      { src: "/assets/img-coldwell-b.webp", pos: "53.0%" },
+      { src: "/assets/img-coldwell-a.webp", pos: "13.4%" },
+      { src: "/assets/img-coldwell-b.webp", pos: "60.6%" },
     ],
   },
   {
@@ -180,7 +180,7 @@ const EXPERIENCE: Exp[] = [
     ],
     row: "/assets/row-hockey.webp",
     cover: "/assets/cover-hockey.webp",
-    coverPos: "47.2%",
+    coverPos: "36.4%",
     detailRole: "AA Travel & River Hill Varsity",
     lede: "Ten years of early mornings. Where the discipline comes from.",
     story:
@@ -197,8 +197,8 @@ const EXPERIENCE: Exp[] = [
       "State academic title: highest team GPA in Maryland",
     ],
     gallery: [
-      { src: "/assets/img-hockey-a.webp", pos: "43.5%" },
-      { src: "/assets/img-hockey-b.webp", pos: "57.4%" },
+      { src: "/assets/img-hockey-a.webp", pos: "26.2%" },
+      { src: "/assets/img-hockey-b.webp", pos: "75.6%" },
     ],
   },
   {
@@ -230,8 +230,8 @@ const EXPERIENCE: Exp[] = [
       "Delivered the final pitch to faculty and peer evaluators",
     ],
     gallery: [
-      { src: "/assets/img-wharton-a.webp", pos: "56.6%" },
-      { src: "/assets/img-wharton-b.webp", pos: "44.2%" },
+      { src: "/assets/img-wharton-a.webp", pos: "72.9%" },
+      { src: "/assets/img-wharton-b.webp", pos: "30.6%" },
     ],
   },
   {
