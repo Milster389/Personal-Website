@@ -103,7 +103,7 @@ const EXPERIENCE: Exp[] = [
     role: "Youth Advisory Board",
     desc: "1 of 25 picked from 1,500+ applicants.",
     points: [
-      "Worked directly with NHL leadership on growing the sport's younger fan base",
+      "Worked directly with NHL CMO Heidi Browning on growing the sport's younger fan base",
       "Represented the board at All-Star Weekend 2024 and the 4 Nations Face-Off 2025",
       "Toured NHL Headquarters to close out two terms on the board",
     ],
@@ -197,8 +197,8 @@ const EXPERIENCE: Exp[] = [
       "State academic title: highest team GPA in Maryland",
     ],
     gallery: [
-      { src: "/assets/img-hockey-a.webp", pos: "50%" },
-      { src: "/assets/img-hockey-b.webp", pos: "50%" },
+      { src: "/assets/img-hockey-a.webp", pos: "43.5%" },
+      { src: "/assets/img-hockey-b.webp", pos: "57.4%" },
     ],
   },
   {
@@ -274,7 +274,7 @@ const EXPERIENCE: Exp[] = [
     role: "Volunteer Intern",
     desc: "Fundraising for a Howard County nonprofit.",
     points: [
-      "Secured 25+ donations of $100+ by cold-emailing and calling 250+ businesses",
+      "Secured 16 donations of $100+ by cold-emailing and calling 250+ businesses",
       "Marketed silent auction items with designed listings",
       "Spearheaded fundraisers for the organization",
     ],
@@ -375,6 +375,8 @@ export default function Page() {
 
   useEffect(() => {
     document.body.classList.toggle("exp-open", index >= 0);
+    const overlay = document.querySelector<HTMLElement>(".exp-detail");
+    if (overlay && index >= 0) { overlay.scrollTop = 0; window.scrollTo(0, 0); }
     if (index >= 0) {
       const onKey = (ev: KeyboardEvent) => {
         if (ev.key === "Escape") window.location.hash = "#experience";
@@ -628,7 +630,7 @@ export default function Page() {
       </footer>
 
       <div className={"exp-detail" + (index >= 0 ? " show" : "")}>
-        {index >= 0 && <Detail index={index} onClose={() => { window.location.hash = "#experience"; }} />}
+        {index >= 0 && <Detail key={EXPERIENCE[index].slug} index={index} onClose={() => { window.location.hash = "#experience"; }} />}
       </div>
     </>
   );

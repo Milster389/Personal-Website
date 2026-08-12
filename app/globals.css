@@ -534,11 +534,13 @@ body.exp-open{overflow:hidden}
 .ed-nav .next{text-align:right;margin-left:auto}
 @media (prefers-reduced-motion: no-preference){
   @keyframes edUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .exp-detail.show > .wrap{animation:edUp .5s var(--ease-out) both}
   .exp-detail.show .ed-head>*{animation:edUp .65s var(--ease-out) both}
   .exp-detail.show .ed-head>*:nth-child(2){animation-delay:.08s}
   .exp-detail.show .ed-head>*:nth-child(3){animation-delay:.16s}
   .exp-detail .ed-hero{clip-path:inset(0 100% 0 0)}
-  .exp-detail.show .ed-hero{clip-path:inset(0);transition:clip-path 1s var(--ease-out) .2s}
+  @keyframes edWipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+  .exp-detail.show .ed-hero{clip-path:inset(0);animation:edWipe 1s var(--ease-out) .2s both}
   .exp-detail.show .ed-body,.exp-detail.show .ed-sec,.exp-detail.show .ed-nav{animation:edUp .7s var(--ease-out) .25s both}
 }
 @media (max-width:700px){
