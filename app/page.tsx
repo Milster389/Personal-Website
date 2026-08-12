@@ -35,7 +35,7 @@ const EXPERIENCE: Exp[] = [
       "Secured leads and imported them into the team CRM",
     ],
     row: "/assets/row-coldwell.webp",
-    cover: "/assets/row-coldwell.webp",
+    cover: "/assets/img-coldwell.png",
     detailRole: "Sales & Marketing Assistant",
     lede: "Pricing strategy, open houses, and a seat in the room where deals get decided.",
     story:
@@ -280,7 +280,7 @@ const EXPERIENCE: Exp[] = [
     ],
     row: "/assets/row-blossoms.webp",
     rowPos: "50% 12.6%",
-    cover: "/assets/row-blossoms.webp",
+    cover: "/assets/img-blossoms.png",
     detailRole: "Volunteer · Development",
     lede: "25+ donations of $100 or more, secured one call at a time.",
     story:
@@ -373,20 +373,27 @@ export default function Page() {
     return () => window.removeEventListener("hashchange", syncHash);
   }, [syncHash]);
 
+  const closeDetail = useCallback(() => {
+    setOpenSlug(null);
+    window.history.replaceState(null, "", window.location.pathname);
+    const t = document.getElementById("experience");
+    if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 70 });
+  }, []);
+
   useEffect(() => {
     document.body.classList.toggle("exp-open", index >= 0);
     const overlay = document.querySelector<HTMLElement>(".exp-detail");
     if (overlay && index >= 0) { overlay.scrollTop = 0; window.scrollTo(0, 0); }
     if (index >= 0) {
       const onKey = (ev: KeyboardEvent) => {
-        if (ev.key === "Escape") window.location.hash = "#experience";
+        if (ev.key === "Escape") closeDetail();
         else if (ev.key === "ArrowRight") window.location.hash = "exp/" + EXPERIENCE[(index + 1) % EXPERIENCE.length].slug;
         else if (ev.key === "ArrowLeft") window.location.hash = "exp/" + EXPERIENCE[(index + EXPERIENCE.length - 1) % EXPERIENCE.length].slug;
       };
       document.addEventListener("keydown", onKey);
       return () => document.removeEventListener("keydown", onKey);
     }
-  }, [index]);
+  }, [index, closeDetail]);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -630,7 +637,7 @@ export default function Page() {
       </footer>
 
       <div className={"exp-detail" + (index >= 0 ? " show" : "")}>
-        {index >= 0 && <Detail key={EXPERIENCE[index].slug} index={index} onClose={() => { window.location.hash = "#experience"; }} />}
+        {index >= 0 && <Detail key={EXPERIENCE[index].slug} index={index} onClose={closeDetail} />}
       </div>
     </>
   );
