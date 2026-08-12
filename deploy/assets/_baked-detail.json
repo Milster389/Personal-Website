@@ -1,0 +1,86 @@
+{
+ "img-coldwell-a": {
+  "src": "assets/img-coldwell-a.webp",
+  "pos": "39.5%"
+ },
+ "img-coldwell-b": {
+  "src": "assets/img-coldwell-b.webp",
+  "pos": "53.0%"
+ },
+ "img-fbla-a": {
+  "src": "assets/img-fbla-a.webp",
+  "pos": "50%"
+ },
+ "img-fbla-b": {
+  "src": "assets/img-fbla-b.webp",
+  "pos": "50%"
+ },
+ "cover-fbla": {
+  "src": "assets/cover-fbla.webp",
+  "pos": "50%"
+ },
+ "cover-nhl": {
+  "src": "assets/cover-nhl.webp",
+  "pos": "50%"
+ },
+ "img-nhl-a": {
+  "src": "assets/img-nhl-a.webp",
+  "pos": "50%"
+ },
+ "img-nhl-b": {
+  "src": "assets/img-nhl-b.webp",
+  "pos": "50%"
+ },
+ "cover-wharton": {
+  "src": "assets/cover-wharton.webp",
+  "pos": "50%"
+ },
+ "img-wharton-a": {
+  "src": "assets/img-wharton-a.webp",
+  "pos": "56.6%"
+ },
+ "img-wharton-b": {
+  "src": "assets/img-wharton-b.webp",
+  "pos": "44.2%"
+ },
+ "img-hockey-a": {
+  "src": "assets/img-hockey-a.webp",
+  "pos": "50%"
+ },
+ "img-hockey-b": {
+  "src": "assets/img-hockey-b.webp",
+  "pos": "50%"
+ },
+ "cover-hockey": {
+  "src": "assets/cover-hockey.webp",
+  "pos": "47.2%"
+ },
+ "img-blossoms-a": {
+  "src": "assets/img-blossoms-a.webp",
+  "pos": "50%"
+ },
+ "cover-pickleball": {
+  "src": "assets/cover-pickleball.webp",
+  "pos": "50%"
+ },
+ "img-pickleball-a": {
+  "src": "assets/img-pickleball-a.webp",
+  "pos": "50%"
+ },
+ "img-pickleball-b": {
+  "src": "assets/img-pickleball-b.webp",
+  "pos": "50%"
+ },
+ "img-marketing-a": {
+  "src": "assets/img-marketing-a.webp",
+  "pos": "50%"
+ },
+ "img-marketing-b": {
+  "src": "assets/img-marketing-b.webp",
+  "pos": "50%"
+ },
+ "cover-marketing": {
+  "src": "assets/cover-marketing.webp",
+  "pos": "50%"
+ }
+}
