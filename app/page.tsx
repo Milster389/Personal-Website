@@ -202,6 +202,40 @@ const EXPERIENCE: Exp[] = [
     ],
   },
   {
+    slug: "blossoms",
+    year: "2026 · NOW",
+    org: "Blossoms of Hope / Mercy Events",
+    role: "Volunteer Intern",
+    desc: "Fundraising for a Howard County nonprofit.",
+    points: [
+      "Secured 16 donations of $100+ by cold-emailing and calling 250+ businesses",
+      "Marketed silent auction items with designed listings",
+      "Raised $3,100 worth of donation items over two Bramazing events with 150+ attendees each event",
+    ],
+    row: "/assets/row-blossoms.webp",
+    rowPos: "50% 12.6%",
+    cover: "/assets/img-blossoms.png",
+    detailRole: "Volunteer · Development",
+    lede: "25+ donations of $100 or more, secured one call at a time.",
+    story:
+      "Development work for a Howard County nonprofit. Cold outreach, donor follow-up, and design work that turned silent auction items into contributions.",
+    facts: [
+      ["Org", "Howard County nonprofit"],
+      ["Donations", "25+ at $100+"],
+      ["Also", "Silent auction brochures"],
+    ],
+    highlights: [
+      "Secured 25+ individual donations valued at $100+ each for the nonprofit's fundraising campaign",
+      "Designed brochures and listings for silent auction items",
+      "Raised $3,100 worth of donation items and set up venue, along with created a slideshow showcasing the events pictures",
+      "Volunteer work also includes MD Hindu Mandir fundraisers, Freetown Farm greenhouse prep, and a local food bank",
+    ],
+    gallery: [
+      { src: "/assets/img-blossoms-a.png", pos: "55%" },
+      { src: "/assets/img-blossoms-b.png", pos: "50%" },
+    ],
+  },
+  {
     slug: "wharton",
     year: "2025",
     org: "Wharton Global Youth",
@@ -267,37 +301,6 @@ const EXPERIENCE: Exp[] = [
       { src: "/assets/img-marketing-b.webp", pos: "50%" },
     ],
   },
-  {
-    slug: "blossoms",
-    year: "2026 · NOW",
-    org: "Blossoms of Hope",
-    role: "Volunteer Intern",
-    desc: "Fundraising for a Howard County nonprofit.",
-    points: [
-      "Secured 16 donations of $100+ by cold-emailing and calling 250+ businesses",
-      "Marketed silent auction items with designed listings",
-      "Spearheaded fundraisers for the organization",
-    ],
-    row: "/assets/row-blossoms.webp",
-    rowPos: "50% 12.6%",
-    cover: "/assets/img-blossoms.png",
-    detailRole: "Volunteer · Development",
-    lede: "25+ donations of $100 or more, secured one call at a time.",
-    story:
-      "Development work for a Howard County nonprofit. Cold outreach, donor follow-up, and design work that turned silent auction items into contributions.",
-    facts: [
-      ["Org", "Howard County nonprofit"],
-      ["Donations", "25+ at $100+"],
-      ["Also", "Silent auction brochures"],
-    ],
-    highlights: [
-      "Secured 25+ individual donations valued at $100+ each for the nonprofit's fundraising campaign",
-      "Designed brochures and listings for silent auction items",
-      "Helped raise $30,000 across two Tyanna Foundation breast cancer events (April 2023, October 2024)",
-      "Volunteer work also includes MD Hindu Mandir fundraisers, Freetown Farm greenhouse prep, and a local food bank",
-    ],
-    gallery: [{ src: "/assets/img-blossoms-a.webp", pos: "50%" }],
-  },
 ];
 
 const pad = (n: number) => (n < 10 ? "0" : "") + n;
@@ -306,10 +309,33 @@ function Detail({ index, onClose }: { index: number; onClose: () => void }) {
   const e = EXPERIENCE[index];
   const prev = EXPERIENCE[(index + EXPERIENCE.length - 1) % EXPERIENCE.length];
   const next = EXPERIENCE[(index + 1) % EXPERIENCE.length];
+
+  useEffect(() => {
+    const overlay = document.querySelector<HTMLElement>(".exp-detail");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const heroImg = document.querySelector<HTMLElement>(".ed-hero img");
+    if (heroImg && !reduced) heroImg.style.transform = "scale(1.04)";
+    let raf = 0;
+    const onScroll = () => {
+      if (!overlay || !heroImg || reduced) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const st = Math.min(overlay.scrollTop, 900);
+        heroImg.style.transform = "scale(1.04) translateY(" + st * -0.04 + "px)";
+      });
+    };
+    overlay?.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      overlay?.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+      if (heroImg) heroImg.style.transform = "";
+    };
+  }, [index]);
+
   return (
     <div className="wrap">
       <div className="ed-top">
-        <button className="ed-back" type="button" onClick={onClose}>← Back</button>
+        <button className="ed-back" type="button" onClick={onClose}><span className="ar">←</span>Back</button>
         <span className="ed-count caps">{pad(index + 1)} / {pad(EXPERIENCE.length)}</span>
       </div>
       <header className="ed-head">
@@ -341,9 +367,9 @@ function Detail({ index, onClose }: { index: number; onClose: () => void }) {
         <div className="ed-sec">
           <h2 className="caps ed-label">Gallery</h2>
           <div className={"ed-gallery" + (e.gallery.length === 1 ? " one" : "")}>
-            {e.gallery.map((g) => (
-              <div className="ed-shot" key={g.src}>
-                <img src={g.src} alt="" style={{ objectPosition: "50% " + g.pos }} />
+            {e.gallery.map((g, i) => (
+              <div className={"ed-shot" + (g.src ? "" : " empty")} key={g.src || "slot-" + i}>
+                {g.src ? <img src={g.src} alt="" style={{ objectPosition: "50% " + g.pos }} /> : <span className="caps">Photo</span>}
               </div>
             ))}
           </div>
@@ -359,8 +385,8 @@ function Detail({ index, onClose }: { index: number; onClose: () => void }) {
 
 export default function Page() {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const [closing, setClosing] = useState(false);
   const index = openSlug ? EXPERIENCE.findIndex((e) => e.slug === openSlug) : -1;
-
   const syncHash = useCallback(() => {
     const m = /^#exp\/([\w-]+)$/.exec(window.location.hash);
     const slug = m && EXPERIENCE.some((e) => e.slug === m[1]) ? m[1] : null;
@@ -374,17 +400,24 @@ export default function Page() {
   }, [syncHash]);
 
   const closeDetail = useCallback(() => {
-    setOpenSlug(null);
     window.history.replaceState(null, "", window.location.pathname);
-    const t = document.getElementById("experience");
-    if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 70 });
+    const finish = () => {
+      setClosing(false);
+      setOpenSlug(null);
+      const t = document.getElementById("experience");
+      if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 70 });
+    };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { finish(); return; }
+    setClosing(true);
+    window.setTimeout(finish, 330);
   }, []);
 
   useEffect(() => {
     document.body.classList.toggle("exp-open", index >= 0);
+    document.body.classList.toggle("exp-back", index >= 0 && !closing);
     const overlay = document.querySelector<HTMLElement>(".exp-detail");
-    if (overlay && index >= 0) { overlay.scrollTop = 0; window.scrollTo(0, 0); }
-    if (index >= 0) {
+    if (overlay && index >= 0 && !closing) { overlay.scrollTop = 0; window.scrollTo(0, 0); }
+    if (index >= 0 && !closing) {
       const onKey = (ev: KeyboardEvent) => {
         if (ev.key === "Escape") closeDetail();
         else if (ev.key === "ArrowRight") window.location.hash = "exp/" + EXPERIENCE[(index + 1) % EXPERIENCE.length].slug;
@@ -393,7 +426,7 @@ export default function Page() {
       document.addEventListener("keydown", onKey);
       return () => document.removeEventListener("keydown", onKey);
     }
-  }, [index, closeDetail]);
+  }, [index, closing, closeDetail]);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -601,6 +634,10 @@ export default function Page() {
               <span className="who">2023 · 2027</span>
             </div>
             <div className="row-item">
+              <span className="what">Folly Quarter Middle School, 8th grade</span>
+              <span className="who">2022 · 2023</span>
+            </div>
+            <div className="row-item">
               <span className="what">Glenelg Country School, K–7</span>
               <span className="who">2014 · 2022</span>
             </div>
@@ -636,7 +673,7 @@ export default function Page() {
         </div>
       </footer>
 
-      <div className={"exp-detail" + (index >= 0 ? " show" : "")}>
+      <div className={"exp-detail" + (index >= 0 ? " show" : "") + (closing ? " closing" : "")}>
         {index >= 0 && <Detail key={EXPERIENCE[index].slug} index={index} onClose={closeDetail} />}
       </div>
     </>
