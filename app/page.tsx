@@ -9,6 +9,7 @@ type Exp = {
   org: string;
   role: string;
   desc: string;
+  link?: { href: string; label: string };
   points: string[];
   row: string;
   rowPos?: string;
@@ -138,6 +139,7 @@ const EXPERIENCE: Exp[] = [
   },
   {
     slug: "pickleball",
+    link: { href: "https://riverhillpickleball.com", label: "riverhillpickleball.com" },
     year: "2023 · NOW",
     org: "River Hill Pickleball Club",
     role: "Founder & President",
@@ -626,7 +628,7 @@ export default function Page() {
                     <h3 className="exp-org">{e.org}</h3>
                     <span className="exp-role">{e.role}</span>
                   </div>
-                  <p className="exp-desc">{e.desc}</p>
+                  <p className="exp-desc">{e.desc}{e.link && <> <a className="exp-link" href={e.link.href} target="_blank" rel="noopener noreferrer" onClick={(ev) => ev.stopPropagation()}>{e.link.label} <span className="ar">↗</span></a></>}</p>
                   <ul className="exp-points">
                     {e.points.map((p) => <li key={p}>{p}</li>)}
                   </ul>

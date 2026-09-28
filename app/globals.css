@@ -634,3 +634,4 @@ body.exp-back main,body.exp-back .nav,body.exp-back .footer{opacity:0;transform:
 .exp-more:hover .ar,.exp-row:hover .exp-more .ar{transform:translateX(4px)}
 @media (max-width:700px){.exp-more{display:flex;justify-content:center;width:100%}}
 .ed-shot.fit{aspect-ratio:auto}.ed-shot.fit img{height:auto;object-fit:initial}.ed-shot.fit:hover img{transform:none}
+.exp-link{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 45%,transparent);white-space:nowrap;transition:border-color .2s ease,color .2s ease}.exp-link:hover{color:#e8bd57;border-color:#e8bd57}.exp-link .ar{font-size:.85em}
