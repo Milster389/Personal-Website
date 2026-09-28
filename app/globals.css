@@ -633,3 +633,4 @@ body.exp-back main,body.exp-back .nav,body.exp-back .footer{opacity:0;transform:
 .exp-more:hover,.exp-row:hover .exp-more,.exp-more:focus-visible{border-color:var(--accent);background:#141109;color:#e8bd57}
 .exp-more:hover .ar,.exp-row:hover .exp-more .ar{transform:translateX(4px)}
 @media (max-width:700px){.exp-more{display:flex;justify-content:center;width:100%}}
+.ed-shot.fit{aspect-ratio:auto}.ed-shot.fit img{height:auto;object-fit:initial}.ed-shot.fit:hover img{transform:none}

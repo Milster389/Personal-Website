@@ -20,7 +20,7 @@ type Exp = {
   story: string;
   facts: [string, string][];
   highlights: string[];
-  gallery: { src: string; pos: string; caption?: string }[];
+  gallery: { src: string; pos: string; caption?: string; fit?: boolean }[];
 };
 
 const EXPERIENCE: Exp[] = [
@@ -132,8 +132,8 @@ const EXPERIENCE: Exp[] = [
       "Represented the board at All-Star Weekend 2024 and the 4 Nations Face-Off 2025",
     ],
     gallery: [
-      { src: "/assets/img-nhl-a.webp", pos: "50%", caption: "2024 NHL All-Star Weekend in Toronto with the full Power Players team." },
-      { src: "/assets/img-nhl-b.webp", pos: "50%", caption: "2025 4 Nations Face-Off in Montreal with the full Power Players team." },
+      { src: "/assets/img-nhl-a.webp", pos: "50%", caption: "2024 NHL All-Star Weekend in Toronto with the full Power Players team. Milan depicted on far right." },
+      { src: "/assets/img-nhl-b.webp", pos: "50%", caption: "2025 4 Nations Face-Off in Montreal with the full Power Players team. Milan depicted on far right." },
     ],
   },
   {
@@ -167,8 +167,8 @@ const EXPERIENCE: Exp[] = [
       "Organized a fundraiser that raised $1,070 for the Howard County Police Foundation",
     ],
     gallery: [
-      { src: "/assets/img-pickleball-a.webp", pos: "50%" },
-      { src: "/assets/img-pickleball-b.webp", pos: "50%" },
+      { src: "/assets/img-pickleball-a-v2.webp", pos: "50%", fit: true, caption: "General member meeting. Milan depicted in middle." },
+      { src: "/assets/img-pickleball-b-v2.webp", pos: "50%", fit: true, caption: "Official competitive match with Varsity Team against Mount Saint Joseph. Milan depicted 5th from the left on the bottom row." },
     ],
   },
   {
@@ -288,7 +288,7 @@ const EXPERIENCE: Exp[] = [
     ],
     row: "/assets/row-marketing.webp",
     cover: "/assets/cover-marketing.webp",
-    coverCaption: "I'm on the far left.",
+    coverCaption: "Milan depicted on far left.",
     detailRole: "Co-Founder & President",
     lede: "72+ members running live campaigns for real small businesses.",
     story:
@@ -379,7 +379,7 @@ function Detail({ index, onClose }: { index: number; onClose: () => void }) {
           <div className={"ed-gallery" + (e.gallery.length === 1 ? " one" : "")}>
             {e.gallery.map((g, i) => (
               <figure className="ed-fig" key={g.src || "slot-" + i}>
-                <div className={"ed-shot" + (g.src ? "" : " empty")}>
+                <div className={"ed-shot" + (g.src ? "" : " empty") + (g.fit ? " fit" : "")}>
                   {g.src ? <img src={g.src} alt="" style={{ objectPosition: "50% " + g.pos }} /> : <span className="caps">Photo</span>}
                 </div>
                 {g.caption && <figcaption className="ed-cap">{g.caption}</figcaption>}
