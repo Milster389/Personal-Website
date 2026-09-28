@@ -14,12 +14,13 @@ type Exp = {
   rowPos?: string;
   cover: string;
   coverPos?: string;
+  coverCaption?: string;
   detailRole: string;
   lede: string;
   story: string;
   facts: [string, string][];
   highlights: string[];
-  gallery: { src: string; pos: string }[];
+  gallery: { src: string; pos: string; caption?: string }[];
 };
 
 const EXPERIENCE: Exp[] = [
@@ -55,8 +56,8 @@ const EXPERIENCE: Exp[] = [
       "Sit in on live transactions and residential market discussions to learn how a deal actually closes",
     ],
     gallery: [
-      { src: "/assets/img-coldwell-a.webp", pos: "13.4%" },
-      { src: "/assets/img-coldwell-b.webp", pos: "60.6%" },
+      { src: "/assets/img-coldwell-a.webp", pos: "13.4%", caption: "Sitting in on Greg Goldman's RVP meeting. Key themes: bringing lenders in the day a buyer goes under contract, tighter condo financing reviews, and pulling HOA documents before listing to catch reserve shortfalls and special assessments early." },
+      { src: "/assets/img-coldwell-b.webp", pos: "60.6%", caption: "Celebrating the first closing I helped on, with Coldwell Banker's commemorative closed key." },
     ],
   },
   {
@@ -66,25 +67,26 @@ const EXPERIENCE: Exp[] = [
     role: "Chapter President",
     desc: "Leading the chapter I joined as a freshman with no title.",
     points: [
-      "6th place internationally, Organizational Leadership · 9th, Entrepreneurship",
+      "6th place nationally, Organizational Leadership (2026) · 9th, Entrepreneurship (2025)",
       "3× Maryland State Champion: 2024, 2025, 2026",
-      "Presented the Pressure Makes Presence workshop at Nationals, 100+ attendees",
+      "Presented the Pressure Makes Presence workshop at Nationals, 120 attendees",
     ],
     row: "/assets/row-fbla.webp",
     cover: "/assets/cover-fbla.webp",
+    coverCaption: "6th Place, Organizational Leadership, FBLA Nationals (2026).",
     detailRole: "Chapter President · 2026–27",
-    lede: "270+ members. An $18,000 budget. Three state titles.",
+    lede: "270+ members. A $15,116 budget. Three state titles.",
     story:
       "Joined as a freshman with no title. Now leading River Hill's largest business organization: setting strategic direction, managing the budget, and competing at the national level every summer.",
     facts: [
       ["Members", "270+"],
-      ["Budget", "$18,000+"],
+      ["Budget", "$15,116"],
       ["State titles", "2024 · 2025 · 2026"],
       ["National finals", "2× finalist"],
       ["Best finish", "6th nationally"],
     ],
     highlights: [
-      "Lead a 270+ member chapter as President, overseeing an $18,000+ annual budget and setting strategic direction",
+      "Lead a 270+ member chapter as President, overseeing a $15,116 annual budget and setting strategic direction",
       "Back-to-back National Finalist: 6th nationally in Organizational Leadership (San Antonio, 2026), 9th in Entrepreneurship (Anaheim, 2025)",
       "3× Maryland State Champion in Entrepreneurship, 1st place 2024 through 2026",
       "1st at Howard County Regionals in Entrepreneurship (2023, 2024, 2025) and Organizational Leadership (2026)",
@@ -92,8 +94,8 @@ const EXPERIENCE: Exp[] = [
       "Selected as a National Workshop Presenter in 2026, a first in school history, delivering Pressure Makes Presence to 120 attendees over two sessions",
     ],
     gallery: [
-      { src: "/assets/img-fbla-a.webp", pos: "50%" },
-      { src: "/assets/img-fbla-b.webp", pos: "50%" },
+      { src: "/assets/img-fbla-a.webp", pos: "50%", caption: "Tatiana Spooner, Sua Cho, and I presenting Pressure Makes Presence, the first national workshop in our school's history. Two sessions, 120 attendees." },
+      { src: "/assets/img-fbla-b.webp", pos: "50%", caption: "9th Place, Entrepreneurship, FBLA Nationals (2025)." },
     ],
   },
   {
@@ -110,6 +112,7 @@ const EXPERIENCE: Exp[] = [
     row: "/assets/row-nhl.webp",
     rowPos: "50% 35.0%",
     cover: "/assets/cover-nhl.webp",
+    coverCaption: "Exclusive official tour of NHL headquarters in New York.",
     detailRole: "Board Member · Youth Strategy & Marketing",
     lede: "1 of 25 selected from 1,500+ global applicants.",
     story:
@@ -129,8 +132,8 @@ const EXPERIENCE: Exp[] = [
       "Represented the board at All-Star Weekend 2024 and the 4 Nations Face-Off 2025",
     ],
     gallery: [
-      { src: "/assets/img-nhl-a.webp", pos: "50%" },
-      { src: "/assets/img-nhl-b.webp", pos: "50%" },
+      { src: "/assets/img-nhl-a.webp", pos: "50%", caption: "2024 NHL All-Star Weekend in Toronto with the full Power Players team." },
+      { src: "/assets/img-nhl-b.webp", pos: "50%", caption: "2025 4 Nations Face-Off in Montreal with the full Power Players team." },
     ],
   },
   {
@@ -138,26 +141,27 @@ const EXPERIENCE: Exp[] = [
     year: "2023 · NOW",
     org: "River Hill Pickleball Club",
     role: "Founder & President",
-    desc: "One of Maryland's first high school pickleball clubs. 83 members.",
+    desc: "One of Maryland's first high school pickleball clubs. 104 members.",
     points: [
-      "Raised $1,070 for the Howard County Police Foundation at an 80-person fundraiser",
+      "Raised $1,070 for the Howard County Police Foundation at an 83-person fundraiser",
       "Built competitive and general teams, weekly play for all skill levels",
       "Designed the club's jerseys and branding",
     ],
     row: "/assets/row-pickleball.webp",
     cover: "/assets/cover-pickleball.webp",
+    coverCaption: "$1,070 raised for the Howard County Police Foundation, with 83 people in attendance.",
     detailRole: "Founder & President",
     lede: "Maryland's first public high school pickleball club.",
     story:
-      "Started with a paddle and a sign-up sheet. Now 83 members, a full brand identity, inter-school competition, and a fundraiser that gave back to the county.",
+      "Started with a paddle and a sign-up sheet. Now 104 members, a full brand identity, inter-school competition, and a fundraiser that gave back to the county.",
     facts: [
-      ["Members", "0 → 83"],
+      ["Members", "0 → 104"],
       ["Founded", "Sept 2023"],
       ["First in MD", "Public school club"],
       ["Raised", "$1,070"],
     ],
     highlights: [
-      "Founded Maryland's first interscholastic public school pickleball club, growing membership from 0 to 83 students",
+      "Founded Maryland's first interscholastic public school pickleball club, growing membership from 0 to 104 students",
       "Organize inter-school competitions and weekly play across skill levels",
       "Built the full club brand identity: logo, uniforms, and social presence",
       "Organized a fundraiser that raised $1,070 for the Howard County Police Foundation",
@@ -172,7 +176,7 @@ const EXPERIENCE: Exp[] = [
     year: "2014 · NOW",
     org: "Competitive Ice Hockey",
     role: "River Hill Varsity",
-    desc: "Where the discipline comes from.",
+    desc: "A decade of travel hockey. Four years on varsity.",
     points: [
       "Undefeated 12-0 season, Serio Cup champions",
       "State academic title, highest team GPA in Maryland",
@@ -182,7 +186,7 @@ const EXPERIENCE: Exp[] = [
     cover: "/assets/cover-hockey.webp",
     coverPos: "36.4%",
     detailRole: "AA Travel & River Hill Varsity",
-    lede: "Ten years of early mornings. Where the discipline comes from.",
+    lede: "A decade of travel hockey. Four years on varsity.",
     story:
       "AA travel hockey since 2015, plus varsity at River Hill. The 2025–26 team went undefeated and won the Serio Cup for the first time in school history.",
     facts: [
@@ -197,25 +201,26 @@ const EXPERIENCE: Exp[] = [
       "State academic title: highest team GPA in Maryland",
     ],
     gallery: [
-      { src: "/assets/img-hockey-a.webp", pos: "26.2%" },
-      { src: "/assets/img-hockey-b.webp", pos: "75.6%" },
+      { src: "/assets/img-hockey-a.webp", pos: "26.2%", caption: "Highest team GPA of any Maryland public high school ice hockey program." },
+      { src: "/assets/img-hockey-b.webp", pos: "75.6%", caption: "2nd Place, AA Crabtown Hockey Tournament at Gardens Ice House (2025)." },
     ],
   },
   {
     slug: "blossoms",
-    year: "2026 · NOW",
+    year: "2023 · NOW",
     org: "Blossoms of Hope / Mercy Events",
-    role: "Volunteer Intern",
+    role: "Intern",
     desc: "Fundraising for a Howard County nonprofit.",
     points: [
       "Secured 16 donations of $100+ by cold-emailing and calling 250+ businesses",
       "Marketed silent auction items with designed listings",
-      "Raised $3,100 worth of donation items over two Bramazing events with 150+ attendees each event",
+      "Raised $3,100 in donated items across the 2023 and 2024 Bramazing events, with proceeds benefiting Mercy Medical Center. 231 total attendees.",
     ],
     row: "/assets/row-blossoms.webp",
     rowPos: "50% 12.6%",
     cover: "/assets/img-blossoms.png",
-    detailRole: "Volunteer · Development",
+    coverCaption: "Secured official NHL memorabilia for the 2024 Bramazing event, including an Ovechkin-signed puck.",
+    detailRole: "Intern · Development",
     lede: "25+ donations of $100 or more, secured one call at a time.",
     story:
       "Development work for a Howard County nonprofit. Cold outreach, donor follow-up, and design work that turned silent auction items into contributions.",
@@ -227,12 +232,13 @@ const EXPERIENCE: Exp[] = [
     highlights: [
       "Secured 25+ individual donations valued at $100+ each for the nonprofit's fundraising campaign",
       "Designed brochures and listings for silent auction items",
-      "Raised $3,100 worth of donation items and set up venue, along with created a slideshow showcasing the events pictures",
+      "Raised $3,100 in donated items across the 2023 and 2024 Bramazing events, with proceeds benefiting Mercy Medical Center. 231 total attendees.",
+      "Set up the venue and created a slideshow of event photos",
       "Volunteer work also includes MD Hindu Mandir fundraisers, Freetown Farm greenhouse prep, and a local food bank",
     ],
     gallery: [
-      { src: "/assets/img-blossoms-a.png", pos: "55%" },
-      { src: "/assets/img-blossoms-b.png", pos: "50%" },
+      { src: "/assets/img-blossoms-a.png", pos: "55%", caption: "Secured an official L'Occitane en Provence sponsored gift basket for the 2024 Bramazing event." },
+      { src: "/assets/img-blossoms-b.png", pos: "50%", caption: "Event setup. 231 attendees across two events." },
     ],
   },
   {
@@ -240,7 +246,7 @@ const EXPERIENCE: Exp[] = [
     year: "2025",
     org: "Wharton Global Youth",
     role: "Scholar",
-    desc: "Essentials of Entrepreneurship, UPenn.",
+    desc: "A two-week summer program at Penn, building the product Recovra.",
     points: [
       "Co-built a cryotherapy performance-bandage venture for athletes",
       "Led the financial modeling, market sizing, and pricing",
@@ -248,8 +254,9 @@ const EXPERIENCE: Exp[] = [
     ],
     row: "/assets/row-wharton.webp",
     cover: "/assets/cover-wharton.webp",
+    coverCaption: "Official lecture hall and name plate.",
     detailRole: "Essentials of Entrepreneurship",
-    lede: "A summer at Penn studying what makes a venture work, then building one.",
+    lede: "A two-week summer program at Penn, building the product Recovra.",
     story:
       "Coursework in entrepreneurship at the Wharton School, capped by a team venture: a cryotherapy recovery product for athletes, taken from concept to pitch.",
     facts: [
@@ -264,8 +271,8 @@ const EXPERIENCE: Exp[] = [
       "Delivered the final pitch to faculty and peer evaluators",
     ],
     gallery: [
-      { src: "/assets/img-wharton-a.webp", pos: "72.9%" },
-      { src: "/assets/img-wharton-b.webp", pos: "30.6%" },
+      { src: "/assets/img-wharton-a.webp", pos: "72.9%", caption: "Official logo for Recovra, a cryotherapeutic bandage." },
+      { src: "/assets/img-wharton-b.webp", pos: "30.6%", caption: "Huntsman Hall, Wharton's flagship building, where lectures took place." },
     ],
   },
   {
@@ -277,10 +284,11 @@ const EXPERIENCE: Exp[] = [
     points: [
       "Co-founded the club and grew it to 72+ members",
       "Partners members with real small businesses on marketing campaigns",
-      "Hosted monthly guest speakers, including the CEO of Bombas",
+      "Hosted monthly guest speakers",
     ],
     row: "/assets/row-marketing.webp",
     cover: "/assets/cover-marketing.webp",
+    coverCaption: "I'm on the far left.",
     detailRole: "Co-Founder & President",
     lede: "72+ members running live campaigns for real small businesses.",
     story:
@@ -289,7 +297,6 @@ const EXPERIENCE: Exp[] = [
       ["Members", "72+"],
       ["Founded", "Sept 2024"],
       ["Clients", "Local small businesses"],
-      ["Speaker", "CEO of Bombas"],
     ],
     highlights: [
       "Co-founded a 72+ member club connecting students with real small business clients to execute live marketing campaigns",
@@ -297,8 +304,8 @@ const EXPERIENCE: Exp[] = [
       "Hosted the CEO of Bombas for a case study analysis competition and Q&A session",
     ],
     gallery: [
-      { src: "/assets/img-marketing-a.webp", pos: "50%" },
-      { src: "/assets/img-marketing-b.webp", pos: "50%" },
+      { src: "/assets/img-marketing-a.webp", pos: "50%", caption: "John Melton of My Lifestyle Academy." },
+      { src: "/assets/img-marketing-b.webp", pos: "50%", caption: "Ashish Parikh and company, owners of the Montreal Tigers professional cricket team." },
     ],
   },
 ];
@@ -343,9 +350,12 @@ function Detail({ index, onClose }: { index: number; onClose: () => void }) {
         <h1 className="display ed-org">{e.org}<span className="accent">.</span></h1>
         <p className="ed-role caps">{e.detailRole}</p>
       </header>
-      <div className="ed-hero">
-        <img src={e.cover} alt="" style={{ objectPosition: "50% " + (e.coverPos || "50%") }} />
-      </div>
+      <figure className="ed-fig">
+        <div className="ed-hero">
+          <img src={e.cover} alt="" style={{ objectPosition: "50% " + (e.coverPos || "50%") }} />
+        </div>
+        {e.coverCaption && <figcaption className="ed-cap">{e.coverCaption}</figcaption>}
+      </figure>
       <div className="ed-body">
         <div className="ed-story">
           <p className="ed-lede">{e.lede}</p>
@@ -368,9 +378,12 @@ function Detail({ index, onClose }: { index: number; onClose: () => void }) {
           <h2 className="caps ed-label">Gallery</h2>
           <div className={"ed-gallery" + (e.gallery.length === 1 ? " one" : "")}>
             {e.gallery.map((g, i) => (
-              <div className={"ed-shot" + (g.src ? "" : " empty")} key={g.src || "slot-" + i}>
-                {g.src ? <img src={g.src} alt="" style={{ objectPosition: "50% " + g.pos }} /> : <span className="caps">Photo</span>}
-              </div>
+              <figure className="ed-fig" key={g.src || "slot-" + i}>
+                <div className={"ed-shot" + (g.src ? "" : " empty")}>
+                  {g.src ? <img src={g.src} alt="" style={{ objectPosition: "50% " + g.pos }} /> : <span className="caps">Photo</span>}
+                </div>
+                {g.caption && <figcaption className="ed-cap">{g.caption}</figcaption>}
+              </figure>
             ))}
           </div>
         </div>
@@ -617,6 +630,12 @@ export default function Page() {
                   <ul className="exp-points">
                     {e.points.map((p) => <li key={p}>{p}</li>)}
                   </ul>
+                  <a
+                    className="exp-more"
+                    href={"#exp/" + e.slug}
+                    onClick={(ev) => ev.stopPropagation()}
+                    aria-label={"Learn more about " + e.org}
+                  >Learn More <span className="ar">→</span></a>
                 </div>
                 <div className="exp-img">
                   <img src={e.row} alt={e.org} loading="lazy" style={{ objectPosition: e.rowPos || "50% 50%" }} />

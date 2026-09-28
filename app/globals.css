@@ -623,3 +623,13 @@ body.exp-back main,body.exp-back .nav,body.exp-back .footer{opacity:0;transform:
   .exp-detail.show .ed-facts div:nth-child(3){animation-delay:.42s}
   .exp-detail.show .ed-facts div:nth-child(4){animation-delay:.49s}
 }
+
+/* ---------- captions ---------- */
+.ed-fig{margin:0}
+.ed-cap{margin-top:10px;font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--fg-2);text-align:left;text-wrap:pretty;max-width:70ch}
+/* ---------- learn more ---------- */
+.exp-more{display:inline-flex;align-items:center;gap:10px;margin-top:18px;min-height:44px;padding:0 20px;background:#000;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 60%,transparent);font-family:var(--sans);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:border-color .2s ease,background-color .2s ease,color .2s ease}
+.exp-more .ar{display:inline-block;transition:transform .2s ease}
+.exp-more:hover,.exp-row:hover .exp-more,.exp-more:focus-visible{border-color:var(--accent);background:#141109;color:#e8bd57}
+.exp-more:hover .ar,.exp-row:hover .exp-more .ar{transform:translateX(4px)}
+@media (max-width:700px){.exp-more{display:flex;justify-content:center;width:100%}}
