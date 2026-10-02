@@ -635,3 +635,29 @@ body.exp-back main,body.exp-back .nav,body.exp-back .footer{opacity:0;transform:
 @media (max-width:700px){.exp-more{display:flex;justify-content:center;width:100%}}
 .ed-shot.fit{aspect-ratio:auto}.ed-shot.fit img{height:auto;object-fit:initial}.ed-shot.fit:hover img{transform:none}
 .exp-link{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 45%,transparent);white-space:nowrap;transition:border-color .2s ease,color .2s ease}.exp-link:hover{color:#e8bd57;border-color:#e8bd57}.exp-link .ar{font-size:.85em}
+.ed-gallery.many{grid-template-columns:repeat(3,minmax(0,1fr))}.ed-gallery.many .ed-shot{aspect-ratio:3/4}
+@media (max-width:700px){.ed-gallery.many{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* ---------- auction lots ---------- */
+.ed-auction-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:22px}
+.ed-auction-head .ed-label{margin:0}
+.ed-auction-total{display:flex;gap:16px;margin:0;font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2)}
+.ed-auction-total .gold{color:var(--accent)}
+.ed-auction{columns:3;column-gap:20px}
+.ed-lot{break-inside:avoid;margin:0 0 28px;display:flex;flex-direction:column;gap:12px}
+.ed-lot-img{border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--bg-soft)}
+.ed-lot-img img{display:block;width:100%;height:auto;transition:transform .5s ease}
+.ed-lot:hover .ed-lot-img img{transform:scale(1.025)}
+.ed-lot-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:2px;border-top:1px solid var(--line);padding-top:10px}
+.ed-lot-name{font-family:var(--sans);font-size:14px;color:var(--fg);text-wrap:pretty}
+.ed-lot-name .no{color:var(--fg-3);margin-right:8px;font-variant-numeric:tabular-nums}
+.ed-lot-val{font-family:var(--sans);font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ed-lot .ed-cap{margin-top:4px}
+@media (max-width:900px){.ed-auction{columns:2}}
+@media (max-width:520px){.ed-auction{columns:1}}
+.ed-sub{margin:0;font-family:var(--sans);font-size:13px;color:var(--fg-2);letter-spacing:.02em}.ed-sub-gap{margin-bottom:16px}
+.ed-lead{margin-bottom:36px}
+.ed-auction{columns:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px;align-items:start}
+.ed-lot{margin:0}
+.ed-lot-val{font-size:16px;font-weight:500}
+@media (max-width:900px){.ed-auction{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.ed-auction{grid-template-columns:minmax(0,1fr)}}

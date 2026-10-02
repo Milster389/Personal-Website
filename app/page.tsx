@@ -22,6 +22,7 @@ type Exp = {
   facts: [string, string][];
   highlights: string[];
   gallery: { src: string; pos: string; caption?: string; fit?: boolean }[];
+  auction?: { title: string; lead?: { src: string; caption: string }[]; items: { src: string; no: number; name: string; from: string; value: number }[] };
 };
 
 const EXPERIENCE: Exp[] = [
@@ -174,6 +175,70 @@ const EXPERIENCE: Exp[] = [
     ],
   },
   {
+    slug: "blossoms",
+    year: "2023 · NOW",
+    org: "Blossoms of Hope / Mercy Events",
+    role: "Intern",
+    desc: "Fundraising for a Howard County nonprofit.",
+    points: [
+      "Secured 17 silent auction items worth $7,068 for Beer, Bourbon & Blues 2026",
+      "Cold-emailed and called 300 businesses over three months",
+      "Raised $3,100 in donated items across the 2023 and 2024 Bramazing events, with proceeds benefiting Mercy Medical Center. 231 total attendees.",
+    ],
+    row: "/assets/row-blossoms-v2.webp",
+    rowPos: "40% 22%",
+    cover: "/assets/img-blossoms.png",
+    coverCaption: "Secured official NHL memorabilia for the 2024 Bramazing event, including an Ovechkin-signed puck.",
+    detailRole: "Intern · Development",
+    lede: "I turn cold calls into auction tables.",
+    story:
+      "I handle donor outreach for fundraising events. I find local businesses, pitch them on giving, follow up until it's a yes, then turn each donation into an auction lot people want to bid on.",
+    facts: [
+      ["Orgs", "Blossoms of Hope · Mercy Medical Center"],
+      ["Events", "Beer, Bourbon & Blues 2026 · Bramazing 2023, 2024"],
+      ["Raised", "$7,068 in auction items · $3,100 in donations"],
+      ["Outreach", "300+ businesses"],
+    ],
+    highlights: [
+      "Secured 17 high-value silent auction items for Beer, Bourbon & Blues 2026, worth $7,068 combined",
+      "Cold-emailed and called 300 businesses over three months",
+      "Designed listings for silent auction items",
+      "Raised $3,100 in donated items across the 2023 and 2024 Bramazing events, with proceeds benefiting Mercy Medical Center. 231 total attendees.",
+      "Set up the venue and created a slideshow of event photos",
+      "Volunteer work also includes MD Hindu Mandir fundraisers, Freetown Farm greenhouse prep, and a local food bank",
+    ],
+    gallery: [
+      { src: "/assets/img-blossoms-a.png", pos: "55%", caption: "Secured an official L'Occitane en Provence sponsored gift basket for the 2024 Bramazing event." },
+      { src: "/assets/img-blossoms-b.png", pos: "50%", caption: "Event setup. 231 attendees across two events." },
+    ],
+    auction: {
+      title: "Blossoms of Hope · Silent auction items I secured",
+      lead: [
+        { src: "/assets/img-bbb-event.webp", caption: "Event with over 300 attendees at Beer, Bourbon & Blues." },
+        { src: "/assets/img-bbb-milan.webp", caption: "Milan on the right with a colleague, the Auction Chair at Blossoms of Hope." },
+      ],
+      items: [
+        { src: "/assets/img-bbb-12.webp", no: 28, name: "Reckless NYE and Resolution", from: "Frisco Tap House / Reckless Shepherd VIP NYE tickets, Orangetheory Fitness Columbia, and Blanton's", value: 909 },
+        { src: "/assets/img-bbb-14.webp", no: 34, name: "Well Remembered", from: "Blossoms of Hope Cherry Blossom Tree Honor and Everett Designers of Fine Jewelry", value: 882 },
+        { src: "/assets/img-bbb-15.webp", no: 35, name: "Celebrate Your Home", from: "The Vertical Connection / Carpet One and Gruet champagne", value: 582 },
+        { src: "/assets/img-bbb-17.webp", no: 49, name: "Casual Luxe", from: "Konstantine's Greek Taverna, Coach, and Fownes", value: 532 },
+        { src: "/assets/img-bbb-08.webp", no: 21, name: "Get Your Glow On", from: "Skin Therapeutics and Sapphire Salon", value: 524 },
+        { src: "/assets/img-bbb-13.webp", no: 32, name: "Hamilton Night Out", from: "Hamilton at the Hippodrome Theatre and Iron Bridge Wine Bar", value: 461 },
+        { src: "/assets/img-bbb-07.webp", no: 20, name: "Sagamore Spirits Tour", from: "Sagamore Spirit tour and tasting for 6", value: 432 },
+        { src: "/assets/img-bbb-09.webp", no: 24, name: "Day at the Races", from: "The Maryland Jockey Club at Laurel Park, with a race named in your honor", value: 350 },
+        { src: "/assets/img-bbb-16.webp", no: 18, name: "All the World's a Stage", from: "Olney Theatre Center and Konstantine's Greek Taverna", value: 343 },
+        { src: "/assets/img-bbb-10.webp", no: 25, name: "Burger for a Year", from: "The White Oak Tavern, plus Stella Artois", value: 291 },
+        { src: "/assets/img-bbb-02.webp", no: 5, name: "Luxurious Sleepover", from: "Bra-La-La and Bath & Body Works", value: 280 },
+        { src: "/assets/img-bbb-04.webp", no: 10, name: "Treat Your Pet", from: "Countryside Veterinary Clinic, Dogtopia, and Fabbioli Cellars", value: 274 },
+        { src: "/assets/img-bbb-05.webp", no: 16, name: "HoCo History", from: "Howard County Historical Society family membership", value: 274 },
+        { src: "/assets/img-bbb-06.webp", no: 19, name: "Soccer Camp", from: "Soccer Association of Columbia training camp and FIFA World Cup ball", value: 240 },
+        { src: "/assets/img-bbb-03.webp", no: 4, name: "Basignani Wine Tasting", from: "Basignani Winery tasting for 4, plus 3 bottles of wine", value: 237 },
+        { src: "/assets/img-bbb-01.webp", no: 2, name: "A Different Perspective", from: "American Visionary Art Museum and Limoncello Italian Restaurant & Wine Bar", value: 235 },
+        { src: "/assets/img-bbb-11.webp", no: 27, name: "I Spy!", from: "International Spy Museum and The Cheesecake Factory", value: 222 },
+      ],
+    },
+  },
+  {
     slug: "hockey",
     year: "2014 · NOW",
     org: "Competitive Ice Hockey",
@@ -205,42 +270,6 @@ const EXPERIENCE: Exp[] = [
     gallery: [
       { src: "/assets/img-hockey-a.webp", pos: "26.2%", caption: "Highest team GPA of any Maryland public high school ice hockey program." },
       { src: "/assets/img-hockey-b.webp", pos: "75.6%", caption: "2nd Place, AA Crabtown Hockey Tournament at Gardens Ice House (2025)." },
-    ],
-  },
-  {
-    slug: "blossoms",
-    year: "2023 · NOW",
-    org: "Blossoms of Hope / Mercy Events",
-    role: "Intern",
-    desc: "Fundraising for a Howard County nonprofit.",
-    points: [
-      "Secured 16 donations of $100+ by cold-emailing and calling 250+ businesses",
-      "Marketed silent auction items with designed listings",
-      "Raised $3,100 in donated items across the 2023 and 2024 Bramazing events, with proceeds benefiting Mercy Medical Center. 231 total attendees.",
-    ],
-    row: "/assets/row-blossoms.webp",
-    rowPos: "50% 12.6%",
-    cover: "/assets/img-blossoms.png",
-    coverCaption: "Secured official NHL memorabilia for the 2024 Bramazing event, including an Ovechkin-signed puck.",
-    detailRole: "Intern · Development",
-    lede: "25+ donations of $100 or more, secured one call at a time.",
-    story:
-      "Development work for a Howard County nonprofit. Cold outreach, donor follow-up, and design work that turned silent auction items into contributions.",
-    facts: [
-      ["Org", "Howard County nonprofit"],
-      ["Donations", "25+ at $100+"],
-      ["Also", "Silent auction brochures"],
-    ],
-    highlights: [
-      "Secured 25+ individual donations valued at $100+ each for the nonprofit's fundraising campaign",
-      "Designed brochures and listings for silent auction items",
-      "Raised $3,100 in donated items across the 2023 and 2024 Bramazing events, with proceeds benefiting Mercy Medical Center. 231 total attendees.",
-      "Set up the venue and created a slideshow of event photos",
-      "Volunteer work also includes MD Hindu Mandir fundraisers, Freetown Farm greenhouse prep, and a local food bank",
-    ],
-    gallery: [
-      { src: "/assets/img-blossoms-a.png", pos: "55%", caption: "Secured an official L'Occitane en Provence sponsored gift basket for the 2024 Bramazing event." },
-      { src: "/assets/img-blossoms-b.png", pos: "50%", caption: "Event setup. 231 attendees across two events." },
     ],
   },
   {
@@ -375,10 +404,46 @@ function Detail({ index, onClose }: { index: number; onClose: () => void }) {
           {e.highlights.map((p) => <li key={p}>{p}</li>)}
         </ul>
       </div>
-      {e.gallery.length > 0 && (
+      {e.auction && (
         <div className="ed-sec">
           <h2 className="caps ed-label">Gallery</h2>
-          <div className={"ed-gallery" + (e.gallery.length === 1 ? " one" : "")}>
+          <div className="ed-auction-head">
+            <p className="ed-sub">{e.auction.title}</p>
+            <p className="ed-auction-total">
+              <span>{e.auction.items.length} items</span>
+              <span className="gold">${e.auction.items.reduce((a, x) => a + x.value, 0).toLocaleString()} total value</span>
+            </p>
+          </div>
+          {e.auction.lead && (
+            <div className="ed-gallery ed-lead">
+              {e.auction.lead.map((g) => (
+                <figure className="ed-fig" key={g.src}>
+                  <div className="ed-shot fit"><img src={g.src} alt="" /></div>
+                  <figcaption className="ed-cap">{g.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+          <div className="ed-auction">
+            {e.auction.items.map((x) => (
+              <figure className="ed-lot" key={x.src}>
+                <div className="ed-lot-img"><img src={x.src} alt={x.name} loading="lazy" /></div>
+                <figcaption>
+                  <div className="ed-lot-top">
+                    <span className="ed-lot-name"><span className="no">#{x.no}</span>{x.name}</span>
+                    <span className="ed-lot-val">${x.value.toLocaleString()}</span>
+                  </div>
+                  <p className="ed-cap">{x.from}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      )}
+      {e.gallery.length > 0 && (
+        <div className="ed-sec">
+          {e.auction ? <p className="ed-sub ed-sub-gap">Mercy Medical Center · Bramazing 2023, 2024</p> : <h2 className="caps ed-label">Gallery</h2>}
+          <div className={"ed-gallery" + (e.gallery.length === 1 ? " one" : "") + (e.gallery.length > 4 ? " many" : "")}>
             {e.gallery.map((g, i) => (
               <figure className="ed-fig" key={g.src || "slot-" + i}>
                 <div className={"ed-shot" + (g.src ? "" : " empty") + (g.fit ? " fit" : "")}>
@@ -637,7 +702,7 @@ export default function Page() {
                     href={"#exp/" + e.slug}
                     onClick={(ev) => ev.stopPropagation()}
                     aria-label={"Learn more about " + e.org}
-                  >Learn More <span className="ar">→</span></a>
+                  >Full Story &amp; Photos <span className="ar">→</span></a>
                 </div>
                 <div className="exp-img">
                   <img src={e.row} alt={e.org} loading="lazy" style={{ objectPosition: e.rowPos || "50% 50%" }} />
