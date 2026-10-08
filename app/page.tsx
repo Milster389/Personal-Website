@@ -33,9 +33,9 @@ const EXPERIENCE: Exp[] = [
     role: "Intern",
     desc: "Associate on the Integrity Plus Network team.",
     points: [
-      "Helped close a first property: three offers, listed Friday, closed Monday",
-      "Toured clients and realtors through the property",
-      "Secured leads and imported them into the team CRM",
+      "Host 2 open houses every weekend, guiding buyers and agents through listings",
+      "Produce 3+ Comparative Market Analyses weekly to guide pricing strategy",
+      "Secured and managed 56+ leads, logging each into the team CRM and MLS",
     ],
     row: "/assets/row-coldwell.webp",
     cover: "/assets/img-coldwell.png",
@@ -67,7 +67,7 @@ const EXPERIENCE: Exp[] = [
     year: "2023 · NOW",
     org: "River Hill FBLA",
     role: "Chapter President",
-    desc: "Leading the chapter I joined as a freshman with no title.",
+    desc: "Chapter President of 284 members, one of the largest FBLA chapters in the region.",
     points: [
       "6th place nationally, Organizational Leadership (2026) · 9th, Entrepreneurship (2025)",
       "3× Maryland State Champion: 2024, 2025, 2026",
@@ -77,18 +77,18 @@ const EXPERIENCE: Exp[] = [
     cover: "/assets/cover-fbla.webp",
     coverCaption: "6th Place, Organizational Leadership, FBLA Nationals (2026).",
     detailRole: "Chapter President · 2026–27",
-    lede: "270+ members. A $15,116 budget. Three state titles.",
+    lede: "284 members. A $15,116 budget. Three state titles.",
     story:
-      "Joined as a freshman with no title. Now leading River Hill's largest business organization: setting strategic direction, managing the budget, and competing at the national level every summer.",
+      "Leading one of the largest FBLA chapters in the region and the largest organization at River Hill High School: setting strategic direction, leading a team of 40+ officers, driving the chapter's Program of Work, and competing at the national level every summer.",
     facts: [
-      ["Members", "270+"],
+      ["Members", "284"],
       ["Budget", "$15,116"],
       ["State titles", "2024 · 2025 · 2026"],
       ["National finals", "2× finalist"],
       ["Best finish", "6th nationally"],
     ],
     highlights: [
-      "Lead a 270+ member chapter as President, overseeing a $15,116 annual budget and setting strategic direction",
+      "Lead a 284 member chapter as President, overseeing a $15,116 annual budget and setting strategic direction",
       "Back-to-back National Finalist: 6th nationally in Organizational Leadership (San Antonio, 2026), 9th in Entrepreneurship (Anaheim, 2025)",
       "3× Maryland State Champion in Entrepreneurship, 1st place 2024 through 2026",
       "1st at Howard County Regionals in Entrepreneurship (2023, 2024, 2025) and Organizational Leadership (2026)",
@@ -109,7 +109,7 @@ const EXPERIENCE: Exp[] = [
     points: [
       "Worked directly with NHL CMO Heidi Browning on growing the sport's younger fan base",
       "Represented the board at All-Star Weekend 2024 and the 4 Nations Face-Off 2025",
-      "Toured NHL Headquarters to close out two terms on the board",
+      "Presented biweekly marketing strategies for teen fan growth to the cohort and rotating NHL executives",
     ],
     row: "/assets/row-nhl.webp",
     rowPos: "50% 35.0%",
@@ -147,7 +147,7 @@ const EXPERIENCE: Exp[] = [
     desc: "One of Maryland's first high school pickleball clubs. 104 members.",
     points: [
       "Raised $1,070 for the Howard County Police Foundation at an 83-person fundraiser",
-      "Built competitive and general teams, weekly play for all skill levels",
+      "Run 2 sessions weekly: an open meeting for general members and a match for the competitive team",
       "Designed the club's jerseys and branding",
     ],
     row: "/assets/row-pickleball.webp",
@@ -314,8 +314,8 @@ const EXPERIENCE: Exp[] = [
     desc: "Real campaigns for local businesses. 72+ members.",
     points: [
       "Co-founded the club and grew it to 72+ members",
-      "Partners members with real small businesses on marketing campaigns",
-      "Hosted monthly guest speakers",
+      "Partnered members with 14 local businesses on live marketing campaigns",
+      "Hosted 9 guest speakers through a monthly speaker series",
     ],
     row: "/assets/row-marketing.webp",
     cover: "/assets/cover-marketing.webp",
