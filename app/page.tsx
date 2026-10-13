@@ -67,7 +67,7 @@ const EXPERIENCE: Exp[] = [
     year: "2023 · NOW",
     org: "River Hill FBLA",
     role: "Chapter President",
-    desc: "Chapter President of 284 members, one of the largest FBLA chapters in the region.",
+    desc: "Chapter President of 302 members, one of the largest FBLA chapters in the region.",
     points: [
       "6th place nationally, Organizational Leadership (2026) · 9th, Entrepreneurship (2025)",
       "3× Maryland State Champion: 2024, 2025, 2026",
@@ -77,18 +77,18 @@ const EXPERIENCE: Exp[] = [
     cover: "/assets/cover-fbla.webp",
     coverCaption: "6th Place, Organizational Leadership, FBLA Nationals (2026).",
     detailRole: "Chapter President · 2026–27",
-    lede: "284 members. A $15,116 budget. Three state titles.",
+    lede: "302 members. A $15,116 budget. Three state titles.",
     story:
       "Leading one of the largest FBLA chapters in the region and the largest organization at River Hill High School: setting strategic direction, leading a team of 40+ officers, driving the chapter's Program of Work, and competing at the national level every summer.",
     facts: [
-      ["Members", "284"],
+      ["Members", "302"],
       ["Budget", "$15,116"],
       ["State titles", "2024 · 2025 · 2026"],
       ["National finals", "2× finalist"],
       ["Best finish", "6th nationally"],
     ],
     highlights: [
-      "Lead a 284 member chapter as President, overseeing a $15,116 annual budget and setting strategic direction",
+      "Lead a 302 member chapter as President, overseeing a $15,116 annual budget and setting strategic direction",
       "Back-to-back National Finalist: 6th nationally in Organizational Leadership (San Antonio, 2026), 9th in Entrepreneurship (Anaheim, 2025)",
       "3× Maryland State Champion in Entrepreneurship, 1st place 2024 through 2026",
       "1st at Howard County Regionals in Entrepreneurship (2023, 2024, 2025) and Organizational Leadership (2026)",
